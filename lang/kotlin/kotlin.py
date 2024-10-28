@@ -6,6 +6,7 @@ ctx.matches = r"""
 code.language: kotlin
 """
 
+# Java Modifies
 ctx.lists["user.code_keyword"] = {
     "var": "var ",
     "val": "val ",
@@ -13,7 +14,7 @@ ctx.lists["user.code_keyword"] = {
     "public": "public ",
     "private": "private ",
     "protected": "protected ",
-    "companion object": "companion object ",
+    "static": "static ",
     "synchronized": "synchronized ",
     "volatile": "volatile ",
     "transient": "transient ",
@@ -134,11 +135,11 @@ class UserActions:
         actions.user.insert_between("else if (", ") ")
 
     def code_state_else():
-        actions.user.insert_between("else {", "}")
+        actions.user.insert_between(" else {", "}")
         actions.key("enter")
 
     def code_state_switch():
-        actions.user.insert_between("when (", ") ")  # Kotlin uses 'when' for switch
+        actions.user.insert_between("switch (", ") ")
 
     def code_state_case():
         actions.insert("case \nbreak;")

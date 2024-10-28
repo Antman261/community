@@ -54,21 +54,21 @@ os: linux
 and app.name: /termite/
 """
 
-apps.windows_command_processor = r"""
+apps.windows_command_processor = """
 os: windows
 and app.name: Windows Command Processor
 os: windows
-and app.exe: /^cmd\.exe$/i
+and app.exe: cmd.exe
 """
 
-apps.windows_terminal = r"""
+apps.windows_terminal = """
 os: windows
-and app.exe: /^windowsterminal\.exe$/i
+and app.exe: WindowsTerminal.exe
 """
 
-mod.apps.windows_power_shell = r"""
+mod.apps.windows_power_shell = """
 os: windows
-and app.exe: /^powershell\.exe$/i
+and app.exe: powershell.exe
 """
 
 apps.vim = """

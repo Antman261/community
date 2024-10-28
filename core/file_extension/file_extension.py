@@ -1,13 +1,12 @@
 from talon import Context, Module
 
-from ..user_settings import track_csv_list
+from ..user_settings import get_list_from_csv
 
 mod = Module()
 mod.list("file_extension", desc="A file extension, such as .py")
 
 _file_extensions_defaults = {
     "dot pie": ".py",
-    "dot elixir": ".ex",
     "dot talon": ".talon",
     "dot mark down": ".md",
     "dot shell": ".sh",
@@ -56,13 +55,11 @@ _file_extensions_defaults = {
     "dot log": ".log",
 }
 
-ctx = Context()
-
-
-@track_csv_list(
+file_extensions = get_list_from_csv(
     "file_extensions.csv",
     headers=("File extension", "Name"),
     default=_file_extensions_defaults,
 )
-def on_update(values):
-    ctx.lists["self.file_extension"] = values
+
+ctx = Context()
+ctx.lists["self.file_extension"] = file_extensions

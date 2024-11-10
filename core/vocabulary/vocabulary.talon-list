@@ -1,5 +1,6 @@
 list: user.vocabulary
 -
+
 N map: nmap
 under documented: under-documented
 nmap
@@ -18,3 +19,7 @@ item potency: idempotency
 tach: tech
 skuas: skuos
 day sole: Daesol
+skew db: SkuDB
+deano: Deno
+pic list: picklist
+zona cloud: SonarCloud

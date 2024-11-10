@@ -1,13 +1,22 @@
 language: typescript
 ---
 
-name: interfaceDeclaration
-phrase: interface
+name: typeObject
+phrase: typeObject
 insertionScope: statement
 
 $1.insertionFormatter: PUBLIC_CAMEL_CASE
 -
-interface $1 {
+type $1 = {
     $0
 }
+---
+
+name: typeDeclaration
+phrase: type
+insertionScope: statement
+
+$1.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+type $1 = $0
 ---

@@ -1,17 +1,16 @@
 list: user.letter
 -
-
 air: a
 bat: b
 cap: c
 drum: d
-echo: e
+ear: e
 fine: f
 gust: g
 harp: h
 sit: i
-jane: j
-kick: k
+jury: j
+crunch: k
 look: l
 made: m
 near: n
@@ -26,4 +25,4 @@ vest: v
 whale: w
 plex: x
 yank: y
-zing: z
+zip: z

@@ -27,6 +27,7 @@ _file_extensions_defaults = {
     "dot J S": ".js",
     "dot java script": ".js",
     "dot TS": ".ts",
+    "dot typescript": ".ts",
     "dot type script": ".ts",
     "dot csv": ".csv",
     "totssv": ".csv",

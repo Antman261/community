@@ -29,21 +29,35 @@ mod.list("code_common_member_function", "Function to use in a dotted chain, eg .
 ctx.lists["user.code_common_member_function"] = {
     "catch": "catch",
     "concat": "concat",
-    "filter": "filter",
+    # "filter": "filter",
     "finally": "finally",
+    # "find": "find",
+    # "flat map": "flatMap",
+    # "for each": "forEach",
+    "join": "join",
+    "includes": "includes",
+    # "map": "map",
+    "pop": "pop",
+    "push": "push",
+    # "reduce": "reduce",
+    "slice": "slice",
+    # "some": "some",
+    "split": "split",
+    "substring": "substring",
+    # "then": "then",
+}
+
+mod.list(
+    "code_common_member_function_with_lambda",
+    "Function to use in a dotted chain that expects a lambda, eg .foo(() => ())",
+)
+ctx.lists["user.code_common_member_function_with_lambda"] = {
+    "filter": "filter",
     "find": "find",
     "flat map": "flatMap",
     "for each": "forEach",
-    "join": "join",
-    "includes": "includes",
     "map": "map",
-    "pop": "pop",
-    "push": "push",
-    "reduce": "reduce",
-    "slice": "slice",
     "some": "some",
-    "split": "split",
-    "substring": "substring",
     "then": "then",
 }
 
@@ -59,6 +73,7 @@ ctx.lists["user.code_keyword"] = {
     "false": "false",
     "function": "function ",
     "import": "import ",
+    "instance of": " instanceof ",
     "let": "let ",
     "new": "new ",
     "null": "null",
@@ -77,10 +92,10 @@ ctx.lists["user.code_keyword"] = {
 @ctx.action_class("user")
 class UserActions:
     def code_insert_is_not_null():
-        actions.auto_insert(" !== null")
+        actions.auto_insert(" != null")
 
     def code_insert_is_null():
-        actions.auto_insert(" === null")
+        actions.auto_insert(" == null")
 
     def code_state_if():
         actions.user.insert_between("if (", ")")
@@ -186,13 +201,13 @@ class UserActions:
         actions.auto_insert(" %= ")
 
     def code_operator_equal():
-        actions.auto_insert(" == ")
+        actions.auto_insert(" === ")
 
     def code_or_operator_assignment():
         actions.auto_insert(" ||= ")
 
     def code_operator_not_equal():
-        actions.auto_insert(" != ")
+        actions.auto_insert(" !== ")
 
     def code_operator_greater_than():
         actions.auto_insert(" > ")

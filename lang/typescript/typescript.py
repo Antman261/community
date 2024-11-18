@@ -9,14 +9,36 @@ mode: command
 """
 
 ctx.lists["user.code_type"] = {
-    "boolean": "boolean",
+    "bool": "boolean",
     "integer": "int",
     "string": "string",
     "null": "null",
     "undefined": "undefined",
+    "unknown": "unknown",
     "number": "number",
+    "numb": "number",
     "any": "any",
+    "never": "never",
+    "void": "void",
 }
+
+mod.list("code_typescript_keyword", desc="List of extra keywords for typescript")
+ctx.lists["user.code_typescript_keyword"] = {
+    "cast": " as ",
+    "extends": " extends ",
+    "implements": " implements ",
+    "satisfies": " satisfies ",
+    "interface": "interface ",
+    "readonly": "readonly ",
+    "type": "type ",
+    "type of": "typeof ",
+    "key of": "keyof ",
+}
+
+
+@mod.capture(rule=("{user.code_keyword} | {user.code_typescript_keyword}"))
+def code_keyword(m) -> str:
+    return str(m)
 
 
 @ctx.action_class("user")

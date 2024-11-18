@@ -262,7 +262,8 @@ code_formatter_names = {
 }
 prose_formatter_names = {
     "say": "NOOP",
-    "speak": "NOOP",
+    # "speak": "NOOP",
+    "sense": "CAPITALIZE_FIRST_WORD",
     "sentence": "CAPITALIZE_FIRST_WORD",
     "title": "CAPITALIZE_ALL_WORDS",
 }
@@ -295,6 +296,13 @@ ctx.lists["self.code_formatter"] = code_formatter_names
 ctx.lists["self.prose_formatter"] = prose_formatter_names
 ctx.lists["user.word_formatter"] = word_formatter_names
 
+mod.list("phrase_ender", desc="list of commands that can be used to end a phrase")
+ctx.lists["self.phrase_ender"] = {
+    "void": "space",
+    "clap": "enter",
+    "spam": ", space",
+    "halt": "space:0",
+}
 
 # The last phrase spoken, without & with formatting. Used for reformatting.
 last_phrase = ""

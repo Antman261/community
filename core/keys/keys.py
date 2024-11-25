@@ -178,6 +178,7 @@ symbol_key_words = {
     "stroke": "/",
     "backstroke": "\\",
     "equal": "=",
+    "eccles": "=",
     "plus": "+",
     "minus": "-",
     "grave": "`",

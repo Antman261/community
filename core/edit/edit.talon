@@ -46,8 +46,8 @@ tail: edit.line_end()
 pop north: edit.file_start()
 pop south: edit.file_end()
 
-pop page up: edit.page_up()
-pop page down: edit.page_down()
+pop pager: edit.page_up()
+pop dager: edit.page_down()
 
 # Selecting
 

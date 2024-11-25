@@ -46,13 +46,13 @@ diamond: user.insert_between("<", ">")
     user.paste("({text})")
 (double | quad) that:
     text = edit.selected_text()
-    user.paste("'{text}'")
-(double quote | dub quote) that:
-    text = edit.selected_text()
     user.paste('"{text}"')
 (single | twin) that:
     text = edit.selected_text()
     user.paste("'{text}'")
+brick that: 
+    text = edit.selected_text()
+    user.paste("`{text}`")
 big round:
     insert("()")
     key(left enter)

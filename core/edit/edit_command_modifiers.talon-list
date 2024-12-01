@@ -6,11 +6,7 @@ paragraph: paragraph
 word: word
 yap: word
 line: line
-line start: lineStart
-way left: lineStart
-line end: lineEnd
-way right: lineEnd
-file start: fileStart
-way up: fileStart
-file end: fileEnd
-way down: fileEnd
+head: lineStart
+tail: lineEnd
+pager: fileStart
+dager: fileEnd

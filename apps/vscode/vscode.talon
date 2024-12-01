@@ -6,15 +6,13 @@ tag(): user.line_commands
 tag(): user.multiple_cursors
 tag(): user.splits
 tag(): user.tabs
+tag(): user.command_search
+
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
 
-please [<user.text>]:
-    user.vscode("workbench.action.showCommands")
-    insert(user.text or "")
-
-go view [<user.text>]:
+pop view [<user.text>]:
     user.vscode("workbench.action.openView")
     insert(user.text or "")
 
@@ -171,6 +169,7 @@ spring forward: user.vscode("workbench.action.navigateForward")
 <user.teleport> implementation: user.vscode("editor.action.goToImplementation")
 <user.teleport> type: user.vscode("editor.action.goToTypeDefinition")
 <user.teleport> usage: user.vscode("references-view.find")
+go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 
 # Bookmarks. Requires Bookmarks plugin
 bar marks: user.vscode("workbench.view.extension.bookmarks")

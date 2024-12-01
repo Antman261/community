@@ -1,0 +1,17 @@
+list: user.special_key
+os: mac
+-
+
+clap: enter
+scrape: escape
+void: space
+tab: tab
+insert: insert
+scrum: backspace
+del: backspace
+delt: backspace
+deli: backspace
+drill: delete
+minus: minus
+page down: pagedown
+page up: pageup

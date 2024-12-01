@@ -7,6 +7,7 @@ from typing import Union
 
 from talon import Module, actions, app, clip, registry, scope, speech_system, ui
 from talon.grammar import Phrase
+from talon.scripting.types import ListTypeFull
 
 pp = pprint.PrettyPrinter()
 
@@ -160,20 +161,6 @@ class Actions:
         for app in apps:
             pp.pprint(app.windows())
 
-    def talon_relaunch():
-        """Quit and relaunch the Talon app"""
-        talon_app = ui.apps(pid=os.getpid())[0]
-        if app.platform == "mac":
-            from shlex import quote
-            from subprocess import Popen
-
-            talon_app_path = quote(talon_app.path)
-            Popen(
-                [
-                    "/bin/sh",
-                    "-c",
-                    f"/usr/bin/open -W {talon_app_path}; sleep 1; /usr/bin/open {talon_app_path}",
-                ],
-                start_new_session=True,
-            )
-            talon_app.quit()
+    def talon_get_active_registry_list(name: str) -> ListTypeFull:
+        """Returns the active list from the Talon registry"""
+        return registry.lists[name][-1]

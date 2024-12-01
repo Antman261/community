@@ -4,32 +4,21 @@ phrase <user.text>$:
     insert(text)
 phrase <user.text> {user.phrase_ender}:
     user.add_phrase_to_history(text)
-    insert(text)
-    key(phrase_ender)
+    insert("{text}{phrase_ender}")
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> {user.phrase_ender}:
     user.insert_formatted(prose, prose_formatter)
-    key(phrase_ender)
-# Note that we have to use two separate lines here rather than an optional halt
-# at the end because otherwise it doesn't work in the following case:
-# "get halt string node"
-# We would like this to map to:
-# get"node"
-# But instead it would map to:
-# getHaltStringNode
-# Also keep an eye out for the following cases when messing with these formatters:
-# getStringNode
-# mockPrePhraseGetVersion
-<user.format_code>: user.insert_many(format_code_list)
-<user.format_code> halt: user.insert_many(format_code_list)
-strict <user.format_code>$: user.insert_many(format_text_list)
+    insert(phrase_ender)
+<user.format_code>+$: user.insert_many(format_code_list)
+<user.format_code>+ {user.phrase_ender}:
+    user.insert_many(format_code_list)
+    insert(phrase_ender)
 <user.formatters> that: user.formatters_reformat_selection(user.formatters)
 {user.word_formatter} <user.word>: user.insert_formatted(word, word_formatter)
-<user.formatters> (pace | paste): user.insert_formatted(clip.text(), formatters)
-word <user.word>:
+<user.formatters> (pace | paste | paster | poster): user.insert_formatted(clip.text(), formatters)
+yap <user.word>:
     user.add_phrase_to_history(word)
     insert(word)
-proud <user.word>: user.insert_formatted(word, "CAPITALIZE_FIRST_WORD")
 recent list: user.toggle_phrase_history()
 recent close: user.phrase_history_hide()
 recent repeat <number_small>:
@@ -41,6 +30,7 @@ select that: user.select_last_phrase()
 before that: user.before_last_phrase()
 nope that | scratch that: user.clear_last_phrase()
 nope that was <user.formatters>: user.formatters_reformat_last(formatters)
+reformat <user.formatters>: user.formatters_reformat_last(formatters)
 (abbreviate | abreviate | brief) {user.abbreviation}: "{abbreviation}"
 <user.formatters> (abbreviate | abreviate | brief) {user.abbreviation}:
     user.insert_formatted(abbreviation, formatters)

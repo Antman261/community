@@ -149,7 +149,7 @@ class TitleFormatter(Formatter):
 
 class CapitalizeFormatter(Formatter):
     def format(self, text: str) -> str:
-        return re.sub(r"^\S+", lambda m: capitalize_first(m.group()), text)
+        return re.sub(r"^\s*\S+", lambda m: capitalize_first(m.group()), text)
 
     def unformat(self, text: str) -> str:
         return unformat_upper(text)
@@ -159,8 +159,13 @@ class SentenceFormatter(Formatter):
     def format(self, text: str) -> str:
         """Capitalize first word if it's already all lower case"""
         words = [x for x in re.split(r"(\s+)", text) if x]
-        if words and words[0].islower():
-            words[0] = words[0].capitalize()
+        for i in range(len(words)):
+            word = words[i]
+            if word.isspace():
+                continue
+            if word.islower():
+                words[i] = word.capitalize()
+            break
         return "".join(words)
 
     def unformat(self, text: str) -> str:
@@ -168,7 +173,9 @@ class SentenceFormatter(Formatter):
 
 
 def capitalize_first(text: str) -> str:
-    return text[:1].upper() + text[1:]
+    stripped = text.lstrip()
+    prefix = text[: len(text) - len(stripped)]
+    return prefix + stripped[:1].upper() + stripped[1:]
 
 
 def capitalize(text: str) -> str:
@@ -259,12 +266,13 @@ code_formatter_names = {
     "snake": "SNAKE_CASE",
     "string": "SINGLE_QUOTED_STRING",
     "constant": "ALL_CAPS,SNAKE_CASE",
+    "screamer": "ALL_CAPS,SNAKE_CASE",
 }
 prose_formatter_names = {
     "say": "NOOP",
-    # "speak": "NOOP",
-    "sense": "CAPITALIZE_FIRST_WORD",
-    "sentence": "CAPITALIZE_FIRST_WORD",
+    #    "sense": "CAPITALIZE_FIRST_WORD",
+    "yarn": "CAPITALIZE_FIRST_WORD",
+    # "sentence": "CAPITALIZE_FIRST_WORD",
     "title": "CAPITALIZE_ALL_WORDS",
 }
 reformatter_names = {
@@ -274,6 +282,7 @@ reformatter_names = {
 }
 word_formatter_names = {
     "word": "ALL_LOWERCASE",
+    "yap": "ALL_LOWERCASE",
     "trot": "TRAILING_SPACE,ALL_LOWERCASE",
     "proud": "CAPITALIZE_FIRST_WORD",
     "leap": "TRAILING_SPACE,CAPITALIZE_FIRST_WORD",
@@ -297,12 +306,6 @@ ctx.lists["self.prose_formatter"] = prose_formatter_names
 ctx.lists["user.word_formatter"] = word_formatter_names
 
 mod.list("phrase_ender", desc="list of commands that can be used to end a phrase")
-ctx.lists["self.phrase_ender"] = {
-    "void": "space",
-    "clap": "enter",
-    "spam": ", space",
-    "halt": "space:0",
-}
 
 # The last phrase spoken, without & with formatting. Used for reformatting.
 last_phrase = ""
@@ -376,9 +379,6 @@ def code_formatters(m) -> str:
 
 
 @mod.capture(
-    # Note that if the user speaks something like "snake dot", it will
-    # insert "dot" - otherwise, they wouldn't be able to insert punctuation
-    # words directly.
     rule="<self.formatters> <user.text> (<user.text> | <user.formatter_immune>)*"
 )
 def format_text(m) -> str:
@@ -393,12 +393,10 @@ def format_text(m) -> str:
     return out
 
 
-@mod.capture(
-    rule="<self.code_formatters> <user.text> (<user.text> | <user.formatter_immune>)*"
-)
+@mod.capture(rule="<user.code_formatters> <user.text>")
 def format_code(m) -> str:
     """Formats code and returns a string"""
-    return format_text(m)
+    return format_phrase(m.text, m.code_formatters)
 
 
 class ImmuneString:
@@ -409,14 +407,15 @@ class ImmuneString:
 
 
 @mod.capture(
-    # Add anything else into this that you want to be able to speak during a
-    # formatter.
+    # Add anything else into this that you want to have inserted when
+    # using a prose formatter.
     rule="(<user.symbol_key> | (numb | numeral) <number>)"
 )
 def formatter_immune(m) -> ImmuneString:
-    """Text that can be interspersed into a formatter, e.g. characters.
+    """Symbols and numbers that can be interspersed into a prose formatter
+    (i.e., not dictated immediately after the name of the formatter)
 
-    It will be inserted directly, without being formatted.
+    They will be inserted directly, without being formatted.
 
     """
     if hasattr(m, "number"):

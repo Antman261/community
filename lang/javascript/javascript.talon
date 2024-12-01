@@ -29,10 +29,10 @@ settings():
     user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
 
-is loose equal: " == "
-is not loose equal: " != "
-is strict equal: " === "
-is strict not equal: " !== "
+is loose: " == "
+is not loose: " != "
+is [equal]: " === "
+(isn't | is not) [equal]: " !== "
 <user.operator> fallback: " ?? "
 <user.operator> quote var: user.insert_between("${", "}")
 <user.operator> spread: "..."
@@ -54,9 +54,9 @@ chain {user.code_common_member_function_with_lambda} block <phrase>:
     user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(({name}) => {{\n\t$body\n}})")
 
 chain reduce:
-    user.cursorless_insert_snippet(".reduce(\n\t(accumulator, value) => ($value),\n\t$initialValue\n)")
+    user.cursorless_insert_snippet(".reduce((acc, val) => ($value), $initialValue)")
 chain reduce block:
-    user.cursorless_insert_snippet(".reduce(\n\t(accumulator, value) => {{\n\t\t$body\n\t}},\n\t$initialValue\n)")
+    user.cursorless_insert_snippet(".reduce((acc, val) => {{\n$body\n}}, $initialValue)")
 chain reduce short: user.cursorless_insert_snippet(".reduce($function, $initialValue)")
 
 <user.operator> const: "const "
@@ -67,5 +67,3 @@ chain reduce short: user.cursorless_insert_snippet(".reduce($function, $initialV
 <user.operator> await: "await "
 dot {user.code_common_member_function}:
     user.insert_between(".{code_common_member_function}(", ")")
-
-from import: user.insert_between(' from  "', '"')

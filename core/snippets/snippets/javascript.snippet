@@ -10,10 +10,57 @@ for (const $1 in $2) {
 }
 ---
 
+name: forOfLoopStatement
+phrase: for of
+insertionScope: statement
+-
+for (const $1 of $2) {
+    $0
+}
+---
+
+name: forLoopStatement
+phrase: for loop
+insertionScope: statement
+-
+for (let i=0; i < $1; i++) {
+    $0
+}
+---
+
+name: earlyReturnBranch
+phrase: early return
+insertionScope: statement
+-
+if ($1) {
+    return $0;
+}
+---
+
+name: earlyReturnVoidBranch
+phrase: early void | early return void
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+if ($1) {
+    $0;
+    return;
+}
+---
+
 name: anonymousFunctionDeclarationAndCall
-phrase: self calling
+phrase: immediately
 -
 (() => {
+    $0
+})();
+---
+
+name: asyncAnonymousFunctionDeclarationAndCall
+phrase: async immediately
+-
+(async () => {
     $0
 })();
 ---
@@ -26,17 +73,216 @@ import * as $0 from "$0";
 
 name: importFromStatement
 phrase: import from
+
+$1.insertionFormatter: DASH_SEPARATED
+$0.insertionFormatter: PRIVATE_CAMEL_CASE
 -
-import $0 from "$0";
+import { $0 } from "$1";
+---
+
+name: constDestructuredAssignment
+phrase: destruct
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const { $0 } = $1;
+---
+
+name: constDestructuredTupleAssignment
+phrase: destruct tuple | destruct toop | destroy top
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const [ $0 ] = $1;
+---
+
+name: constAssignment
+phrase: assign | const
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const $1 = $0;
 ---
 
 name: namedLambdaExpression
-phrase: arrow funk
+phrase: const arrow
 insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
 -
-const $1 = ($2) => {
+const $1 = ($2) => $0;
+---
+
+name: namedAsyncLambdaExpression
+phrase: const async arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const $1 = async ($2) => $0;
+---
+
+name: anonymousLambdaExpression
+phrase: lamb | lambda | anon arrow | arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+($1) => $0
+---
+
+name: anonymousAsyncLambdaExpression
+phrase: async lamb | async lambda | async anon arrow | async arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+async ($1) => $0
+---
+
+name: exportNamedLambdaExpression
+phrase: export arrow | export lamb
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export const $1 = ($2) => $0;
+---
+
+name: exportNamedAsyncLambdaExpression
+phrase: export async arrow | export async lamb
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export const $1 = async ($2) => $0;
+---
+
+name: anonymousFunctionDeclaration
+phrase: anon funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+function ($1) {
     $0
 }
+---
+
+name: namedFunctionDeclaration
+phrase: funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+function $1($2) {
+    $0
+}
+---
+
+name: namedAsyncFunctionDeclaration
+phrase: async funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+async function $1($2) {
+    $0
+}
+---
+
+name: exportFunctionDeclaration
+phrase: export funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export function $1($2) {
+    $0
+}
+---
+
+name: exportAsyncFunctionDeclaration
+phrase: export async funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export async function $1($2) {
+    $0
+}
+---
+
+name: getterDeclaration
+phrase: getter
+insertionScope: statement
+-
+get $1() {
+    $0
+},
+---
+
+name: setterDeclaration
+phrase: setter
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+set $1($2) {
+    $0
+},
+---
+
+name: methodDeclaration
+phrase: method
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+$1($2) {
+    $0
+},
+---
+
+name: asyncMethodDeclaration
+phrase: async method
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+async $1($2) {
+    $0
+},
+---
+
+name: testSuiteDeno
+phrase: deno test
+-
+Deno.test("$1", () => {
+  $2
+  expect($3).$4($0);
+});
+---
+
+name: testSuiteDenoAsync
+phrase: deno test async | deno async test
+-
+Deno.test("$1", async () => {
+  $2
+  expect($3).$4($0);
+});
 ---
 
 name: reactUseState

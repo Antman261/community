@@ -1,9 +1,11 @@
 list: user.letter
 -
 
+# for common alternative spoken forms for letters, visit
+# https://talon.wiki/quickstart/improving_recognition_accuracy/#collected-alternatives-to-the-default-alphabet
 air: a
 bat: b
-cap: c
+cart: c
 drum: d
 echo: e
 fine: f
@@ -23,7 +25,7 @@ sun: s
 trap: t
 urge: u
 vest: v
-wink: w
+wall: w
 plex: x
 yank: y
 zing: z

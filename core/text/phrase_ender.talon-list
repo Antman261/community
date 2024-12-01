@@ -1,0 +1,7 @@
+list: user.phrase_ender
+-
+
+void: " "
+clap: "\n"
+spam: ", "
+halt: ""

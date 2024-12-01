@@ -8,7 +8,7 @@ mod.apps.slack = """
 os: windows
 and app.name: Slack
 os: windows
-and app.exe: slack.exe
+and app.exe: /^slack\.exe$/i
 """
 apps.slack = """
 os: mac

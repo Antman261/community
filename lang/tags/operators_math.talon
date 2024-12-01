@@ -20,6 +20,7 @@ is not equal: user.code_operator_not_equal()
 # logical operators
 (<user.operator> | logical) and: user.code_operator_and()
 (<user.operator> | logical) or: user.code_operator_or()
+(<user.operator> | logical) not: user.code_operator_not()
 
 # set operators
 (<user.operator> | is) in: user.code_operator_in()

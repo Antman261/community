@@ -1,10 +1,10 @@
 tag: user.tabs
 -
 tab make: app.tab_open()
-tab (last | back): app.tab_previous()
-tab next: app.tab_next()
+tab (last | back | tug): app.tab_previous()
+tab (next | pump): app.tab_next()
 tab close: user.tab_close_wrapper()
 tab (reopen | restore): app.tab_reopen()
-tab <user.ordinals>: user.tab_jump(ordinals)
+tab <number>: user.tab_jump(number)
 tab final: user.tab_final()
 tab (duplicate | clone): user.tab_duplicate()

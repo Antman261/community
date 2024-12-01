@@ -18,5 +18,231 @@ insertionScope: statement
 
 $1.insertionFormatter: PUBLIC_CAMEL_CASE
 -
-type $1 = $0
+type $1 = $0;
+---
+
+name: typeGenericObject
+phrase: type generic object
+insertionScope: statement
+
+$1.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+type $1<$2> = {
+    $0
+}
+---
+
+name: typeGenericDeclaration
+phrase: type generic
+insertionScope: statement
+
+$1.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+type $1<$2> = $0;
+---
+
+name: recordDeclaration
+phrase: record
+insertionScope: statement
+-
+Record<$1, $0>
+---
+
+name: arrayDeclaration
+phrase: array type
+insertionScope: statement
+-
+Array<$0>
+---
+
+name: tupleDeclaration
+phrase: type tuple
+insertionScope: statement
+
+$1.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+type $1 = [$2, $0];
+---
+
+name: unionValue
+phrase: piper
+insertionScope: statement
+
+$0.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+$1 | $0
+---
+
+name: unionValue
+phrase: amper
+insertionScope: statement
+
+$0.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+$1 & $0
+---
+
+name: typeGuardExpression
+phrase: type guard
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+($1: unknown): $1 is $2 => $0
+---
+
+name: genericConstraintExpression
+phrase: constrained | extends
+insertionScope: statement
+
+$1.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+<$1 extends $0>
+---
+
+name: constAssignment
+phrase: assign | const
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const $1: $2 = $0;
+---
+
+name: namedLambdaExpression
+phrase: const arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const $1 = ($2: $3): $4 => $0;
+---
+
+name: nameTypedLambdaExpression
+phrase: const arrow typed
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PUBLIC_CAMEL_CASE
+$3.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const $1: $2 = ($3) => $0;
+---
+
+name: namedAsyncLambdaExpression
+phrase: const async arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+const $1 = async ($2: $3): $4 => $0;
+---
+
+name: namedTypedAsyncLambdaExpression
+phrase: const async arrow typed
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+const $1: $2 = async ($3) => $0;
+---
+
+name: anonymousLambdaExpression
+phrase: lamb | lambda | anon arrow | arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+($1) => $0
+---
+
+name: anonymousAsyncLambdaExpression
+phrase: async lamb | async lambda | async anon arrow | async arrow
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+async ($1) => $0
+---
+
+name: exportNamedLambdaExpression
+phrase: export arrow | export lamb
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export const $1 = ($2) => $0;
+---
+
+name: exportNamedAsyncLambdaExpression
+phrase: export async arrow | export async lamb
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export const $1 = async ($2) => $0;
+---
+
+name: anonymousFunctionDeclaration
+phrase: anon funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+function ($1) {
+    $0
+}
+---
+
+name: namedFunctionDeclaration
+phrase: funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+function $1($2) {
+    $0
+}
+---
+
+name: namedAsyncFunctionDeclaration
+phrase: async funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+async function $1($2) {
+    $0
+}
+---
+
+name: exportFunctionDeclaration
+phrase: export funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export function $1($2) {
+    $0
+}
+---
+
+name: exportAsyncFunctionDeclaration
+phrase: export async funk
+insertionScope: statement
+
+$1.insertionFormatter: PRIVATE_CAMEL_CASE
+$2.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+export async function $1($2) {
+    $0
+}
 ---

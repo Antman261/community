@@ -9,7 +9,7 @@ patch {user.symbol_key}:
     "{symbol_key}"
     edit.line_insert_down()
 spam: ", "
-pipe gap: " | "
+(pipe gap) | piper: " | "
 boom: ". "
 arrow: "->"
 dub arrow: "=>"
@@ -50,7 +50,7 @@ diamond: user.insert_between("<", ">")
 (single | twin) that:
     text = edit.selected_text()
     user.paste("'{text}'")
-brick that: 
+brick that:
     text = edit.selected_text()
     user.paste("`{text}`")
 big round:

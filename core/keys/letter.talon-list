@@ -4,6 +4,7 @@ list: user.letter
 # for common alternative spoken forms for letters, visit
 # https://talon.wiki/quickstart/improving_recognition_accuracy/#collected-alternatives-to-the-default-alphabet
 air: a
+bob: b
 bill: b
 cart: c
 cap: c
@@ -12,7 +13,6 @@ cope: c
 drum: d
 echo: e
 earn: e
-ear: e
 fine: f
 gust: g
 harp: h

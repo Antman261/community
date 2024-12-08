@@ -32,6 +32,7 @@ null
 parser
 dock: doc
 docks: docs
+descope
 edit
 edits
 eenum: enum
@@ -49,3 +50,4 @@ debounce
 debounced
 delimiter
 delimiters
+rows

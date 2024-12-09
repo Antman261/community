@@ -59,9 +59,9 @@ toggle right sidebar: key(cmd-.)
 (previous | last) (section | zone):
     app.notify("please use the voice command 'section last' instead of 'last section'")
     key(shift-f6)
-[next] (element | bit):
+[next] (element):
     app.notify("please use the voice command 'element next' instead of 'next element'")
     key(tab)
-(previous | last) (element | bit):
+(previous | last) (element):
     app.notify("please use the voice command 'element last' instead of 'last element'")
     key(shift-tab)

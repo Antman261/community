@@ -21,18 +21,12 @@ scroll down: edit.page_down()
 # go word left, go 2 words right
 pop <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
 drain: edit.word_left()
-drain <number_small> times: user.words_left(number_small)
 step: edit.word_right()
-step <number_small> times: user.words_right(number_small)
 
 tug: edit.left()
-tug <number_small> times: user.left_n(number_small)
 pump: edit.right()
-pump <number_small> times: user.right_n(number_small)
 north: edit.up()
-north <number_small> times: user.up_n(number_small)
 south: edit.down()
-south <number_small> times: user.down_n(number_small)
 head: edit.line_start()
 tail: edit.line_end()
 

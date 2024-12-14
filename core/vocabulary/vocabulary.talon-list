@@ -27,6 +27,8 @@ deano: Deno
 deno
 pic list: picklist
 picklists
+tote
+totes
 zona cloud: SonarCloud
 node
 no js: node.js
@@ -60,8 +62,14 @@ delimiters
 excalidraw
 bang etude: magnitude
 pull request
+a PR
 barcode
 rows
 Spacecubed
 retool
 deriver
+write model
+read model
+autostore
+conveyor
+wms

@@ -30,9 +30,9 @@ settings():
     user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
 
 is loose: " == "
-is not loose: " != "
-is [equal]: " === "
-(isn't | is not) [equal]: " !== "
+(isn't | is not) loose: " != "
+is equal: " === "
+(isn't | is not) equal: " !== "
 <user.operator> fallback: " ?? "
 <user.operator> quote var: user.insert_between("${", "}")
 <user.operator> spread: "..."

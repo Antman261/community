@@ -3,8 +3,8 @@
 <user.edit_action> <user.edit_modifier>: user.edit_command(edit_action, edit_modifier)
 
 # Zoom
-zoom in: edit.zoom_in()
-zoom out: edit.zoom_out()
+zoom in | zim: edit.zoom_in()
+zoom out | zout: edit.zoom_out()
 zoom reset: edit.zoom_reset()
 
 # Searching
@@ -19,7 +19,7 @@ scroll down: edit.page_down()
 
 # go left, go left left down, go 5 left 2 down
 # go word left, go 2 words right
-pop <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
+# pop <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
 drain: edit.word_left()
 step: edit.word_right()
 
@@ -43,8 +43,8 @@ take pump: edit.extend_right()
 take north: edit.extend_line_up()
 take south: edit.extend_line_down()
 
-take scrap: edit.extend_word_left()
-take junk: edit.extend_word_right()
+take drain: edit.extend_word_left()
+take step: edit.extend_word_right()
 
 take head: edit.extend_line_start()
 take tail: edit.extend_line_end()
@@ -57,9 +57,7 @@ indent [more]: edit.indent_more()
 
 # Delete
 drill: edit.delete_right()
-scrum:
-    app.notify("use del instead")
-    edit.delete()
+scrum: edit.delete()
 scrap:
     edit.extend_word_left()
     edit.delete()
@@ -68,27 +66,18 @@ junk:
     edit.delete()
 
 # Copy
-copy that:
-    edit.copy()
-    app.notify("use copper instead")
 copper: edit.copy()
 
 # Cut
 cutter: edit.cut()
 
 # Paste
-(pace | paste) that:
-    edit.paste()
-    app.notify("use (poster | paster) instead")
 (poster | paster | pasta): edit.paste()
-paste match: edit.paste_match_style()
+(paste | pasta) match: edit.paste_match_style()
 
-# Duplication
-# clone that: edit.selection_clone()
-# clone line: edit.line_clone()
 
 # Undo/redo
-(undo that | nope | blast): edit.undo()
+(undo that | nope | blast | [ah] shit): edit.undo()
 (redo that | yes indeed): edit.redo()
 
 # Save
@@ -102,4 +91,4 @@ emoji scout [<user.text>]:
     key(cmd-ctrl-space)
     sleep(200ms)
     insert(user.text or "")
-[pop] mid: user.line_middle()
+pop mid: user.line_middle()

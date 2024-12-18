@@ -62,6 +62,7 @@ delimiters
 excalidraw
 bang etude: magnitude
 pull request
+pour request: pull request
 a PR
 barcode
 rows
@@ -73,3 +74,6 @@ read model
 autostore
 conveyor
 wms
+load balancer
+lord balancer: load balancer
+honeycomb

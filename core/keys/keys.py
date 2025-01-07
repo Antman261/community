@@ -170,6 +170,7 @@ symbol_key_words = {
     "semi": ";",
     "stack": ":",
     "drip": ",",
+    "drimp": ",",
     "dollar": "$",
     "pound sign": "£",
     "dot": ".",

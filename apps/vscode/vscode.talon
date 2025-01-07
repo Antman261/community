@@ -339,9 +339,9 @@ break <user.cursorless_target>:
     user.cursorless_command("setSelectionBefore", cursorless_target)
     user.vscode("hideSuggestWidget")
     key("enter")
-break:
-    user.vscode("hideSuggestWidget")
-    key("enter")
+# break:
+#     user.vscode("hideSuggestWidget")
+#     key("enter")
 
 dock string <user.cursorless_target>:
     user.cursorless_command("editNewLineBefore", cursorless_target)

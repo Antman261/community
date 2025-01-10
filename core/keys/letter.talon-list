@@ -1,8 +1,5 @@
 list: user.letter
 -
-
-# for common alternative spoken forms for letters, visit
-# https://talon.wiki/quickstart/improving_recognition_accuracy/#collected-alternatives-to-the-default-alphabet
 air: a
 bob: b
 bill: b
@@ -13,9 +10,11 @@ drum: d
 echo: e
 earn: e
 fine: f
+feign: f
 gust: g
+gut: g
 harp: h
-ham: h
+hop: h
 sit: i
 jane: j
 joe: j
@@ -26,6 +25,7 @@ net: n
 near: n
 nate: n
 neat: n
+now: n
 odd: o
 pit: p
 quip: q
@@ -37,6 +37,7 @@ under: u
 vest: v
 whale: w
 whim: w
+wat: w
 plex: x
 yank: y
 yoke: y

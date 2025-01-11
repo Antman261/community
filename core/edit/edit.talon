@@ -77,7 +77,7 @@ cutter: edit.cut()
 
 
 # Undo/redo
-(undo that | nope | blast | [ah] shit): edit.undo()
+(undo that | nope | blast | (ah | oh) shit): edit.undo()
 (redo that | yes indeed): edit.redo()
 
 # Save

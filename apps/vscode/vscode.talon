@@ -1,4 +1,3 @@
-#custom vscode commands go here
 app: vscode
 -
 tag(): user.find_and_replace
@@ -10,18 +9,17 @@ tag(): user.command_search
 
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
-#multiple_cursor.py support end
 
 pop view [<user.text>]:
     user.vscode("workbench.action.openView")
     insert(user.text or "")
 
 # Sidebar
-pop (explore | tree): user.vscode("workbench.view.explorer")
-pop (extensions | ext): user.vscode("workbench.view.extensions")
-bar run: user.vscode("workbench.view.debug")
+pop tree: user.vscode("workbench.view.explorer")
+pop ecky: user.vscode("workbench.view.extensions")
+pop runner: user.vscode("workbench.view.debug")
 pop git: user.vscode("workbench.view.scm")
-bar test: user.vscode("workbench.view.testing.focus")
+pop tester: user.vscode("workbench.view.testing.focus")
 flick side: user.vscode("workbench.action.toggleSidebarVisibility")
 search pump: user.vscode("search.action.focusNextSearchResult")
 search tug: user.vscode("search.action.focusPreviousSearchResult")
@@ -47,16 +45,12 @@ scout symbol all [<user.text>]:
 panel control: user.vscode("workbench.panel.repl.view.focus")
 <user.teleport> output: user.vscode("workbench.panel.output.focus")
 <user.teleport> problems: user.vscode("workbench.panel.markers.view.focus")
-panel switch: user.vscode("workbench.action.togglePanel")
-# focus editor: user.vscode("workbench.action.focusActiveEditorGroup")
 problem show: user.vscode("workbench.panel.markers.view.focus")
 (low | flick) (dog | dob): user.vscode("workbench.action.togglePanel")
 term show:
     user.vscode("workbench.action.terminal.focus")
     sleep(250ms)
-# low show: user.vscode("workbench.action.focusPanel")
-pan edit: user.vscode("workbench.action.focusActiveEditorGroup")
-<user.teleport> (doc <number_small> | <user.ordinals> doc): 
+<user.teleport> (doc (<number_small> | <user.ordinals>) | <user.ordinals> doc):
     num = number_small or ordinals
     key("cmd-{num}")
 
@@ -81,6 +75,16 @@ fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
 wrap switch: user.vscode("editor.action.toggleWordWrap")
 (zen switch) | (flick zen): user.vscode("workbench.action.toggleZenMode")
+flick mini: user.vscode("editor.action.toggleMinimap")
+doc (maxxer | bigger): user.vscode("workbench.action.minimizeOtherEditors")
+doc restore: user.vscode("workbench.action.evenEditorWidths")
+doc move right: user.vscode("workbench.action.moveEditorToRightGroup")
+doc move left: user.vscode("workbench.action.moveEditorToLeftGroup")
+
+#breadcrumb
+pop bread: user.vscode("breadcrumbs.focusAndSelect")
+bread pump: key(alt-right)
+bread tug: key(alt-left)
 
 # File Commands
 (file hunt | scout file) [<user.text>]:
@@ -164,31 +168,16 @@ unfold all: user.vscode("editor.unfoldAll")
 fold comments: user.vscode("editor.foldAllBlockComments")
 
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
-git branches: user.vscode("gitlens.views.branches.focus")
-git branch: user.vscode("git.branchFrom")
-git branch this: user.vscode("git.branch")
-git checkout [<user.text>]:
-    user.vscode("git.checkout")
-    sleep(50ms)
-    insert(text or "")
-git commit [<user.text>]:
-    user.vscode("git.commitStaged")
-    sleep(100ms)
-    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git commit undo: user.vscode("git.undoCommit")
 git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
 git fetch: user.vscode("git.fetch")
 git fetch all: user.vscode("git.fetchAll")
-git ignore: user.vscode("git.ignore")
 git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
-git pull: user.vscode("git.pullRebase")
 git push: user.vscode("git.push")
 # git push force: user.vscode("git.pushForce")
-git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
-git revert: user.vscode("git.revertChange")
 git stash: user.vscode("git.stash")
 git stash pop: user.vscode("git.stashPop")
 git status: user.vscode("workbench.scm.focus")
@@ -197,7 +186,6 @@ git stage all: user.vscode("git.stageAll")
 git sync: user.vscode("git.sync")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
-pull request: user.vscode("pr.create")
 # Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
 # action: https://code.visualstudio.com/api/references/when-clause-contexts
 change next: key(alt-f5)
@@ -233,53 +221,33 @@ debug clean: user.vscode("workbench.debug.panel.action.clearReplAction")
 
 # Terminal
 term external: user.vscode("workbench.action.terminal.openNativeConsole")
-term new: user.vscode("workbench.action.terminal.new")
-term next: user.vscode("workbench.action.terminal.focusNext")
-term last: user.vscode("workbench.action.terminal.focusPrevious")
+term make: user.vscode("workbench.action.terminal.new")
+term pump: user.vscode("workbench.action.terminal.focusNext")
+term tug: user.vscode("workbench.action.terminal.focusPrevious")
 term split: user.vscode("workbench.action.terminal.split")
 term zoom: user.vscode("workbench.action.toggleMaximizedPanel")
-term trash: user.vscode("workbench.action.terminal.kill")
-<user.teleport> term: user.vscode_and_wait("workbench.action.terminal.toggleTerminal")
+term chuck: user.vscode("workbench.action.terminal.kill")
+(<user.teleport> | flick) term: user.vscode_and_wait("workbench.action.terminal.toggleTerminal")
 term scroll up: user.vscode("workbench.action.terminal.scrollUp")
 term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)
 
-task run [<user.text>]:
-    user.vscode("workbench.action.tasks.runTask")
-    insert(user.text or "")
-
 #Expand/Shrink AST Selection
-select less: user.vscode("editor.action.smartSelect.shrink")
-select (more | this): user.vscode("editor.action.smartSelect.expand")
-
-minimap: user.vscode("editor.action.toggleMinimap")
-maximize: user.vscode("workbench.action.minimizeOtherEditors")
-restore: user.vscode("workbench.action.evenEditorWidths")
-
-#breadcrumb
-select breadcrumb: user.vscode("breadcrumbs.focusAndSelect")
-# Use `alt-left` and `alt-right` to navigate the bread crumb
-
-replace here:
-    user.replace("")
-    key(cmd-alt-l)
+take less: user.vscode("editor.action.smartSelect.shrink")
+take (more | this): user.vscode("editor.action.smartSelect.expand")
 
 hover show: user.vscode("editor.action.showHover")
-
-join lines: user.vscode("editor.action.joinLines")
 
 full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
 curse redo: user.vscode("cursorRedo")
 
-select word: user.vscode("editor.action.addSelectionToNextFindMatch")
-skip word: user.vscode("editor.action.moveSelectionToNextFindMatch")
+take word: user.vscode("editor.action.addSelectionToNextFindMatch")
+word pump: user.vscode("editor.action.moveSelectionToNextFindMatch")
+word tug: user.vscode("editor.action.moveSelectionToPreviousFindMatch")
 
-install local: user.vscode("workbench.extensions.action.installVSIX")
 (preview markdown) | (markdown preview): user.vscode("markdown.showPreview")
-
-#han solo: user.vscode("workbench.action.joinAllGroups")
 
 reflow: user.vscode("rewrap.rewrapComment")
 break <user.cursorless_target>:
@@ -317,11 +285,3 @@ imports fix:
 # search again: user.vscode("rerunSearchEditorSearch")
 
 typescript restart: user.vscode("typescript.restartTsServer")
-doc move right: user.vscode("workbench.action.moveEditorToRightGroup")
-doc move left: user.vscode("workbench.action.moveEditorToLeftGroup")
-
-make executable: user.vscode("chmod.plusX")
-
-{user.search_engine} scout <user.cursorless_target>:
-    text = user.cursorless_get_text(cursorless_target)
-    user.search_with_search_engine(search_engine, text)

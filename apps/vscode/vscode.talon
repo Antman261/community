@@ -26,7 +26,7 @@ search tug: user.vscode("search.action.focusPreviousSearchResult")
 tree collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 
 scout here: key(cmd-f)
-scout space: key(cmd-shift-f)
+scout (space | all): key(cmd-shift-f)
 scout replace: key(cmd-alt-f)
 scout replace all: key(cmd-shift-h)
 
@@ -87,7 +87,7 @@ bread pump: key(alt-right)
 bread tug: key(alt-left)
 
 # File Commands
-(file hunt | scout file) [<user.text>]:
+(file hunt | scout (file | doc)) [<user.text>]:
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
     insert(text or "")
@@ -116,8 +116,9 @@ dock chuck:
     sleep(150ms)
 
 # Language Features
-suggest show: user.vscode("editor.action.triggerSuggest")
-hint show: user.vscode("editor.action.triggerParameterHints")
+fixer: user.vscode("editor.action.quickFix")
+flick (sugger | suggest): user.vscode("editor.action.triggerSuggest")
+flick hint: user.vscode("editor.action.triggerParameterHints")
 definition peek: user.vscode("editor.action.peekDefinition")
 definition side: user.vscode("editor.action.revealDefinitionAside")
 references show: user.vscode("editor.action.goToReferences")
@@ -142,14 +143,12 @@ ref tug:
     key(up enter)
 
 #code navigation
-(<user.teleport> declaration | follow): user.vscode("editor.action.revealDefinition")
-spring back: user.vscode("workbench.action.navigateBack")
-spring forward: user.vscode("workbench.action.navigateForward")
+<user.teleport> (declaration | follow | def): user.vscode("editor.action.revealDefinition")
+<user.teleport> tug: user.vscode("workbench.action.navigateBack")
+<user.teleport> pump: user.vscode("workbench.action.navigateForward")
 <user.teleport> implementation: user.vscode("editor.action.goToImplementation")
 <user.teleport> type: user.vscode("editor.action.goToTypeDefinition")
-<user.teleport> usage: user.vscode("references-view.find")
-<user.teleport> references: user.vscode("references-view.find")
-<user.teleport> def: user.vscode("editor.action.revealDefinition")
+<user.teleport> (usage | references | refs): user.vscode("references-view.find")
 <user.teleport> def peek: user.vscode("editor.action.peekDefinition")
 go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 
@@ -211,6 +210,7 @@ break point: user.vscode("editor.debug.action.toggleBreakpoint")
 step over: user.vscode("workbench.action.debug.stepOver")
 step into: user.vscode("workbench.action.debug.stepInto")
 step out of: user.vscode("workbench.action.debug.stepOut")
+run here: user.vscode("workbench.action.debug.run")
 debug start: user.vscode("workbench.action.debug.start")
 debug pause: user.vscode("workbench.action.debug.pause")
 debug stopper: user.vscode("workbench.action.debug.stop")

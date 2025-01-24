@@ -75,9 +75,8 @@ cutter: edit.cut()
 (poster | paster | pasta): edit.paste()
 (paste | pasta) match: edit.paste_match_style()
 
-
 # Undo/redo
-(undo that | nope | blast | (ah | oh) shit): edit.undo()
+(undo that | nope | blast | (ah | oh) shit | boom | blooper | blunder): edit.undo()
 (redo that | yes indeed): edit.redo()
 
 # Save

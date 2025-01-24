@@ -1,12 +1,6 @@
 tag: user.line_commands
 -
 #this defines some common line commands. More may be defined that are ide-specific.
-lend:
-    user.deprecate_command("2024-07-30", "lend", "go line end | tail")
-    edit.line_end()
-bend:
-    user.deprecate_command("2024-07-30", "bend", "go line start | head")
-    edit.line_start()
 go <number>: edit.jump_line(number)
 go <number> end:
     edit.jump_line(number)
@@ -70,7 +64,7 @@ drag down <number> until <number>:
     edit.line_swap_down()
 clone [line] <number>: user.line_clone(number)
 
-select camel left: user.extend_camel_left()
-select camel right: user.extend_camel_right()
-go camel left: user.camel_left()
-go camel right: user.camel_right()
+take camel left: user.extend_camel_left()
+take camel right: user.extend_camel_right()
+pop camel left: user.camel_left()
+pop camel right: user.camel_right()

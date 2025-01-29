@@ -1,5 +1,6 @@
 list: user.letter
 -
+
 air: a
 bob: b
 bill: b
@@ -8,23 +9,18 @@ carp: c
 cope: c
 drum: d
 echo: e
-earn: e
 fine: f
 feign: f
 gust: g
-gut: g
+group: g
 harp: h
 hop: h
 sit: i
-jane: j
 joe: j
+jolt: j
 kick: k
 look: l
 made: m
-net: n
-near: n
-nate: n
-neat: n
 now: n
 odd: o
 pit: p
@@ -40,6 +36,7 @@ whim: w
 plex: x
 yank: y
 yoke: y
+yet: y
 zing: z
 zang: z
 zoo: z

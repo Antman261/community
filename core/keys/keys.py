@@ -138,7 +138,8 @@ punctuation_words = {
 }
 symbol_key_words = {
     "brick": "`",
-    "stroke": "/",
+    "strock": "/",
+    "lane": "/",
     "backstroke": "\\",
     "equal": "=",
     "eccles": "=",

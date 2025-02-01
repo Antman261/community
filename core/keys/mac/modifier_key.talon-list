@@ -2,12 +2,12 @@ list: user.modifier_key
 os: mac
 -
 
-alt: alt
+alter: alt
 control: ctrl
 shift: shift
 ship: shift
 sky: shift
-come: cmd
+comet: cmd
 troll: cmd
 command: cmd
 option: alt

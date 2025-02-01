@@ -122,8 +122,9 @@ Multiple formatters can be used together, e.g. `dubstring snake hello world`. Th
 Formatters (snake, dubstring) are defined here
 https://github.com/talonhub/community/blob/main/core/text/formatters.py#L137
 
-All formatter-related commands are defined here
-https://github.com/talonhub/community/blob/main/core/text/text.talon#L8
+Reformat existing text with one or more formatters by selecting it, then saying the formatter name(s) followed by `that`. Say `help reformat` to display how each formatter reformats `one_two_three`.
+
+Formatter names (snake, dubstring) are defined [here](core/formatters/formatters.py#L245). Formatter-related commands are defined in [text.talon](core/text/text.talon#L8).
 
 ### Mouse commands
 
@@ -144,8 +145,7 @@ Try saying e.g. `select up third` to hit `shift-up` three times to select some l
 
 ### Window management
 
-Global window managment commands are defined here:
-https://github.com/talonhub/community/blob/main/core/windows_and_tabs/window_management.talon
+Global window management commands are defined in [window_management.talon](core/windows_and_tabs/window_management.talon).
 
 - `running list` will toggle a GUI list of words you can say to switch to running applications.
 - `focus chrome` will focus the chrome application.
@@ -181,7 +181,6 @@ Python, C#, Talon and javascript language support is currently broken up into se
 - `lang/tags/functions_common.{talon,py}` - common functions (also includes a GUI for picking functions)
 - `lang/tags/imperative.{talon,py}` - statements (e.g., `if`, `while`, `switch`)
 - `lang/tags/libraries.{talon,py}` - libraries and imports
-- `lang/tags/libraries_gui.{talon,py}` - graphical helper for common libraries
 - `lang/tags/object_oriented.{talon,py}` - objects and classes (e.g., `this`)
 - `lang/tags/operators_array.{talon,py}` - array operators (e.g., Ruby's `x[0]`)
 - `lang/tags/operators_assignment.{talon,py}` - assignment operators (e.g., C++'s `x += 5`)

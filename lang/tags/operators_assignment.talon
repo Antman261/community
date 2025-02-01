@@ -4,23 +4,44 @@ tag(): user.code_operators_math
 tag(): user.code_operators_bitwise
 
 # assignment
-<user.operator> (equals | assign): user.code_operator_assignment()
-<user.operator> or equals: user.code_or_operator_assignment()
+op assign:
+    user.deprecate_command("2025-01-19", "op assign", "op equals")
+    user.code_operator("ASSIGNMENT")
 
 # combined computation and assignment
-<user.operator> (minus | subtract) equals: user.code_operator_subtraction_assignment()
-<user.operator> (plus | add) equals: user.code_operator_addition_assignment()
-<user.operator> (times | multiply) equals: user.code_operator_multiplication_assignment()
-<user.operator> divide equals: user.code_operator_division_assignment()
-<user.operator> mod equals: user.code_operator_modulo_assignment()
-[<user.operator>] increment: user.code_operator_increment()
+op subtract equals:
+    user.deprecate_command("2025-01-19", "op subtract equals", "op minus equals")
+    user.code_operator("ASSIGNMENT_SUBTRACTION")
+
+op add equals:
+    user.deprecate_command("2025-01-19", "op add equals", "op plus equals")
+    user.code_operator("ASSIGNMENT_ADDITION")
+
+op multiply equals:
+    user.deprecate_command("2025-01-19", "op multiply equals", "op times equals")
+    user.code_operator("ASSIGNMENT_MULTIPLICATION")
+
+increment:
+    user.deprecate_command("2025-01-19", "increment", "op increment")
+    user.code_operator("ASSIGNMENT_INCREMENT")
 
 #bitwise operators
-[<user.operator>] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
-[<user.operator>] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
-(<user.operator> | logical | bitwise) (ex | exclusive) or equals:
-    user.code_operator_bitwise_exclusive_or_assignment()
-[(<user.operator> | logical | bitwise)] (left shift | shift left) equals:
-    user.code_operator_bitwise_left_shift_assignment()
-[(<user.operator> | logical | bitwise)] (right shift | shift right) equals:
-    user.code_operator_bitwise_right_shift_assignment()
+[op] bit [wise] and equals:
+    user.deprecate_command("2025-01-19", "[op] bit [wise] and equals", "op bitwise and equals")
+    user.code_operator("ASSIGNMENT_BITWISE_AND")
+
+[op] bit [wise] or equals:
+    user.deprecate_command("2025-01-19", "[op] bit [wise] or equals", "op bitwise or equals")
+    user.code_operator("ASSIGNMENT_BITWISE_OR")
+
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.deprecate_command("2025-01-19", "(op | logical | bitwise) (ex | exclusive) or equals", "op bitwise exclusive or equals")
+    user.code_operator("ASSIGNMENT_BITWISE_EXCLUSIVE_OR")
+
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    user.deprecate_command("2025-01-19", "[(op | logical | bitwise)] (left shift | shift left) equals", "op left shift equals")
+    user.code_operator("ASSIGNMENT_BITWISE_LEFT_SHIFT")
+
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    user.deprecate_command("2025-01-19", "[(op | logical | bitwise)] (right shift | shift right) equals", "op right shift equals")
+    user.code_operator("ASSIGNMENT_BITWISE_RIGHT_SHIFT")

@@ -395,9 +395,11 @@ class UserActions:
 
     # line_commands.py support begin
     def delete_camel_left():
+        """Delete non-space-delimited word left"""
         actions.user.vscode("deleteWordPartLeft")
 
     def delete_camel_right():
+        """Delete non-space-delimited word bright"""
         actions.user.vscode("deleteWordPartRight")
 
     def extend_camel_left():

@@ -23,6 +23,12 @@ class Actions:
             actions.edit.extend_line_down()
         actions.edit.extend_line_end()
 
+    def delete_camel_left():
+        """Delete non-space-delimited word left"""
+
+    def delete_camel_right():
+        """Delete non-space-delimited word bright"""
+    
     def extend_camel_left():
         """Extends the selection by camel/subword to the left"""
 

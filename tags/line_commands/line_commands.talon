@@ -64,7 +64,7 @@ drag down <number> until <number>:
     edit.line_swap_down()
 clone [line] <number>: user.line_clone(number)
 
-take camel left: user.extend_camel_left()
-take camel right: user.extend_camel_right()
-pop camel left: user.camel_left()
-pop camel right: user.camel_right()
+<user.select> camel left: user.extend_camel_left()
+<user.select> camel right: user.extend_camel_right()
+<user.teleport> camel left: user.camel_left()
+<user.teleport> camel right: user.camel_right()

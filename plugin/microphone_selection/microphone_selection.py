@@ -3,6 +3,10 @@ from talon.lib import cubeb
 
 ctx = cubeb.Context()
 mod = Module()
+mod.tag(
+    "mic_picker_open",
+    desc="Microphone picker is open",
+)
 
 
 microphone_device_list = []
@@ -37,7 +41,7 @@ def gui(gui: imgui.GUI):
             actions.user.microphone_select(index)
 
     gui.spacer()
-    if gui.button("Microphone close"):
+    if gui.button("Mic close"):
         actions.user.microphone_selection_hide()
 
 
@@ -46,8 +50,10 @@ class Actions:
     def microphone_selection_toggle():
         """Show GUI for choosing the Talon microphone"""
         if gui.showing:
+            ctx.tags = []
             gui.hide()
         else:
+            ctx.tags = ["user.mic_picker_open"]
             update_microphone_list()
             gui.show()
 

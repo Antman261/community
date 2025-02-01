@@ -1,8 +1,6 @@
 code.language: typescript
 code.language: typescriptreact
 -
-settings():
-    user.code_typename_formatter = "PUBLIC_CAMEL_CASE"
 
 # <user.operator> union [<user.code_type>]: " | {code_type or ''}"
 # <user.operator> pipe: " | {code_type or ''}"

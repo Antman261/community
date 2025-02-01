@@ -61,7 +61,7 @@ scrum: edit.delete()
 scrap:
     edit.extend_word_left()
     edit.delete()
-junk:
+junker:
     edit.extend_word_right()
     edit.delete()
 

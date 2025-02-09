@@ -5,11 +5,11 @@ take: select
 pre: goBefore
 post: goAfter
 
-copy: copyToClipboard
-cut: cutToClipboard
-paste: pasteFromClipboard
-paste to: pasteFromClipboard
+copper: copyToClipboard
+cut it: cutToClipboard
+pasta: pasteFromClipboard
+paster: pasteFromClipboard
 
 deli: delete
-del: delete
+dellip: delete
 delt: delete

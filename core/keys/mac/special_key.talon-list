@@ -7,10 +7,8 @@ scrape: escape
 void: space
 tab: tab
 insert: insert
-scrum: backspace
-del: backspace
-delt: backspace
 deli: backspace
+dellip: backspace
 drill: delete
 minus: minus
 minny: minus

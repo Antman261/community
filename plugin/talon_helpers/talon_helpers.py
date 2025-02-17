@@ -5,7 +5,7 @@ import re
 from itertools import islice
 from typing import Union
 
-from talon import Module, actions, app, clip, registry, scope, speech_system, ui
+from talon import Module, actions, app, clip, registry, scope, speech_system, ui, settings
 from talon.grammar import Phrase
 from talon.scripting.types import ListTypeFull
 
@@ -113,6 +113,12 @@ class Actions:
         print("**** Dumping settings **** ")
         print(str(registry.settings))
         print("***********************")
+
+    def talon_list_settings():
+        """List all settings"""
+        print("**** Dumping settings **** ")
+        print(str(settings.list()))
+        
 
     def talon_get_active_context() -> str:
         """Returns active context info"""

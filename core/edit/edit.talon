@@ -69,7 +69,7 @@ junker:
 copper: edit.copy()
 
 # Cut
-cutter: edit.cut()
+cut that: edit.cut()
 
 # Paste
 (poster | paster | pasta): edit.paste()

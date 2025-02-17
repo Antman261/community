@@ -55,7 +55,7 @@ settings():
     user.grids_put_one_bottom_left = true
 
     # Set the default number of command history lines to display
-    user.command_history_display = 10
+    user.command_history_display = 50
 
     # Set the total number of command history lines to display
     user.command_history_size = 50
@@ -85,7 +85,7 @@ settings():
     # user.window_snap_screen = "size aware"
 
     # Puts Talon into sleep mode if no commands are spoken for a defined period of time.
-    user.listening_timeout_minutes = 5
+    # user.listening_timeout_minutes = 5
 
     # Time in seconds to wait for the clipboard to change when trying to get selected text
     # user.selected_text_timeout = 0.25

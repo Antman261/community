@@ -9,7 +9,6 @@ tag(): user.command_search
 
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
-
 pop view [<user.text>]:
     user.vscode("workbench.action.openView")
     insert(user.text or "")
@@ -25,6 +24,7 @@ search pump: user.vscode("search.action.focusNextSearchResult")
 search tug: user.vscode("search.action.focusPreviousSearchResult")
 tree collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 
+# Search
 scout here: key(cmd-f)
 scout (space | all): key(cmd-shift-f)
 scout replace: key(cmd-alt-f)
@@ -42,6 +42,7 @@ scout symbol all [<user.text>]:
     insert(text or "")
 
 # Panels
+<user.teleport> (commander | comms | palette): user.command_palette()
 panel control: user.vscode("workbench.panel.repl.view.focus")
 <user.teleport> output: user.vscode("workbench.panel.output.focus")
 <user.teleport> problems: user.vscode("workbench.panel.markers.view.focus")

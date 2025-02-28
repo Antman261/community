@@ -76,7 +76,7 @@ cut that: edit.cut()
 (paste | pasta) match: edit.paste_match_style()
 
 # Undo/redo
-(undo that | nope | blast | (ah | oh) shit | boom | blooper | blunder): edit.undo()
+(undo that | nope | blast | blooper | blundor): edit.undo()
 (redo that | yes indeed): edit.redo()
 
 # Save

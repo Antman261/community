@@ -1,4 +1,3 @@
-new line: "\n"
 # double dash: "--"
 # triple quote: "'''"
 pebbles: "..."

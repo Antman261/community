@@ -34,8 +34,8 @@ is loose: " == "
 is equal: " === "
 (isn't | is not) equal: " !== "
 <user.operator> fallback: " ?? "
+op null else: " ?? "
 <user.operator> quote var: user.insert_between("${", "}")
-<user.operator> spread: "..."
 
 chain length: ".length"
 chain {user.code_common_member_function}:

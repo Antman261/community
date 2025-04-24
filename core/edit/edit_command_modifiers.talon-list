@@ -3,8 +3,6 @@ list: user.edit_modifier
 
 all: document
 paragraph: paragraph
-word: word
-yap: word
 line: line
 head: lineStart
 tail: lineEnd

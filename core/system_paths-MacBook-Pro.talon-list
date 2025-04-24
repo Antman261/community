@@ -1,0 +1,16 @@
+list: user.system_paths
+hostname: MacBook-Pro
+-
+user: /Users/anthonymanning-franklin
+desktop: /Users/anthonymanning-franklin/Desktop
+desk: /Users/anthonymanning-franklin/Desktop
+documents: /Users/anthonymanning-franklin/Documents
+docks: /Users/anthonymanning-franklin/Documents
+downloads: /Users/anthonymanning-franklin/Downloads
+music: /Users/anthonymanning-franklin/Music
+pictures: /Users/anthonymanning-franklin/Pictures
+videos: /Users/anthonymanning-franklin/Videos
+talon home: /Users/anthonymanning-franklin/.talon
+talon recordings: /Users/anthonymanning-franklin/.talon/recordings
+talon user: /Users/anthonymanning-franklin/.talon/user
+home: /Users/anthonymanning-franklin

@@ -73,7 +73,7 @@ cut that: edit.cut()
 
 # Paste
 (poster | paster | pasta): edit.paste()
-(paste | pasta) match: edit.paste_match_style()
+(pasta match) | spaghetti: edit.paste_match_style()
 
 # Undo/redo
 (undo that | nope | blast | blooper | blundor): edit.undo()

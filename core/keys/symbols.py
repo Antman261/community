@@ -50,7 +50,7 @@ class Symbol:
 
 currency_symbols = [
     Symbol("$", ["dollar sign"], ["dollar"]),
-    Symbol("£", ["pound sign"], ["pound"]),
+    Symbol("£", ["pound sign"], None),
 ]
 
 symbols = [
@@ -75,13 +75,13 @@ symbols = [
     Symbol(")", ["R paren", "right paren"], ["repper"]),
     Symbol("[", None,["brack", "L brack", "bracket", "L bracket", "left bracket", "square", "L square", "left square", "lacquer", "lacker"]),
     Symbol("]", None, ["R brack", "R bracket", "right bracket", "R square", "right square", "racker"]),
-    Symbol("/", ["forward slash"], ["strock", "lane"]),
+    Symbol("/", ["forward slash"], ["strock"]),
     Symbol("\\", None, ["backstroke"]),
     Symbol("{", None, ["brace", "L brace", "left brace", "curly bracket", "left curly bracket", "lace", "laser"],),
     Symbol("}", None, ["R brace", "right brace","R curly bracket", "right curly bracket", "bracer", "racer"]),
     Symbol("<", None, ["angle", "L Angle", "left angle", "less than", "langle"]),
     Symbol(">", None, ["rangle", "R angle", "right angle", "greater than"]),
-    Symbol("^", None, ["caret", "tangle"]),
+    Symbol("^", None, ["tangle"]),
     Symbol("|", None, ["pipe"]),
     Symbol("'", None, ["single"]),
     Symbol('"', None, ["double"]),

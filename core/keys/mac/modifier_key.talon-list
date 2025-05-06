@@ -7,8 +7,6 @@ control: ctrl
 shift: shift
 ship: shift
 sky: shift
-comet: cmd
-troll: cmd
 command: cmd
 option: alt
 function: fn

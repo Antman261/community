@@ -83,8 +83,8 @@ cut that: edit.cut()
 disk: edit.save()
 disk oliver: edit.save_all()
 
-pour: edit.line_insert_down()
-drink: edit.line_insert_up()
+pour | trailer: edit.line_insert_down()
+drink | drinker: edit.line_insert_up()
 
 emoji scout [<user.text>]:
     key(cmd-ctrl-space)

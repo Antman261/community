@@ -71,15 +71,15 @@ end gap:
     edit.line_end()
     key(space)
 
-slider:
-    edit.line_end()
-    insert(",")
-    key(enter)
+# slider:
+#     edit.line_end()
+#     insert(",")
+#     key(enter)
 
-breaker:
-    edit.line_end()
-    insert(" {")
-    key(enter)
+# breaker:
+#     edit.line_end()
+#     insert(" {")
+#     key(enter)
 
 chronic:
     edit.line_end()

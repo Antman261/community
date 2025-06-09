@@ -192,11 +192,12 @@ change next: key(alt-f5)
 change last: key(shift-alt-f5)
 
 # Testing
-test here: user.vscode("testing.runAtCursor")
+test (here | it): user.vscode("testing.runAtCursor")
 test [run] (file | doc): user.vscode("testing.runCurrentFile")
-test run all: user.vscode("testing.runAll")
+test everything: user.vscode("testing.runAll")
 test [run] failed: user.vscode("testing.reRunFailTests")
 test [run] last: user.vscode("testing.reRunLastRun")
+(re test) | retest: user.vscode("testing.reRunLastRun")
 
 test debug here: user.vscode("testing.debugAtCursor")
 test debug file: user.vscode("testing.debugCurrentFile")

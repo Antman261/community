@@ -1,7 +1,7 @@
 app: vscode
 -
 tag(): user.find_and_replace
-# tag(): user.line_commands
+tag(): user.line_commands
 tag(): user.multiple_cursors
 tag(): user.splits
 tag(): user.tabs
@@ -287,11 +287,3 @@ imports fix:
 # search again: user.vscode("rerunSearchEditorSearch")
 
 typescript restart: user.vscode("typescript.restartTsServer")
-
-# Editor movement & selection
-<user.select> camel tug: user.extend_camel_left()
-<user.select> camel pump: user.extend_camel_right()
-<user.teleport> camel tug: user.camel_left()
-<user.teleport> camel pump: user.camel_right()
-<user.delete> camel tug: user.delete_camel_left()
-<user.delete> camel pump: user.delete_camel_right()

@@ -4,6 +4,7 @@ os: mac
 
 clap: enter
 scrape: escape
+scalp: escape
 void: space
 tab: tab
 insert: insert

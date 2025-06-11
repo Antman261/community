@@ -27,7 +27,7 @@ It is recommended to install `community` using [`git`](https://git-scm.com/).
 
 1. Install [`git`](https://git-scm.com/)
 2. Open a terminal ([Mac](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac) / [Ubuntu](https://ubuntu.com/tutorials/command-line-for-beginners#3-opening-a-terminal))
-3. Paste the following into the terminal and hit `enter`:
+3. Paste the following into the terminal window then press <kbd>Enter</kbd>/<kbd>Return</kbd>:
 
    ```bash
    cd ~/.talon/user
@@ -41,8 +41,8 @@ Note that it is also possible to install `community` by [downloading and extract
 It is recommended to install `community` using [`git`](https://git-scm.com/).
 
 1. Install [`git`](https://git-scm.com/)
-2. Open a [terminal](https://www.wikihow.com/Open-the-Command-Prompt-in-Windows)
-3. Paste the following into the terminal and hit `enter`:
+2. Open a [command prompt](https://www.wikihow.com/Open-the-Command-Prompt-in-Windows)
+3. Paste the following into the command prompt window then press <kbd>Enter</kbd>:
 
    ```
    cd %AppData%\Talon\user
@@ -88,21 +88,23 @@ Try saying e.g. `air bat cap` to insert abc.
 
 Keys are defined in keys.py. The alphabet is used for A-Z. For the rest, search for `modifier_keys` and then keep scrolling through the file, eg. roughly https://github.com/talonhub/community/blob/main/core/keys/keys.py#L111
 
-All key commands are defined in [keys.talon](https://github.com/talonhub/community/blob/main/core/keys/keys.talon). For example, say `shift air` to press `shift-a`, which types a capital `A`.
+For modifier keys, say `help modifiers`. For example, say `shift air` to press <kbd>Shift</kbd> + <kbd>A</kbd>, which types a capital `A`.
 
 On Windows, try commands such as
 
 - `control air` to press `control-a` and select all.
 
-- `super-shift-sun` to press `windows-shift-s` to trigger the screenshot application (Windows 10). Then try `escape` to exit the screenshot application.
+- `control air` to press <kbd>Control</kbd> + <kbd>A</kbd> and select all.
 
-On Mac, try commands such as
+- `super-shift-sun` to press <kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>, triggering the screenshot application (Windows 10/11). Then try `escape` to exit.
 
 - `command air` to press `command-a` and select all.
 
-- `control shift command 4` to press ` ctrl-shift-cmd-4` to trigger the screenshot application. Then try `escape` to exit the screenshot application. Please note the order of the modifiers doesn't matter.
+- `command air` to press <kbd>⌘</kbd><kbd>A</kbd> and select all.
 
-Any combination of the modifiers, symbols, alphabet, numbers and function keys can be executed via voice to execute shorcuts. Modifier keys can be tapped using `press`, for example `press control` to tap the control key by itself.
+- `control shift command 4` to press <kbd>⌃</kbd><kbd>⇧</kbd><kbd>⌘</kbd><kbd>4</kbd>, copying a screenshot of the selected area to the clipboard. Then try `escape` to exit. Please note the order of the modifiers doesn't matter.
+
+Say any combination of modifiers, symbols, alphabet, numbers and function keys to execute keyboard shortcuts. Modifier keys can be tapped using `press`, for example `press control` taps the <kbd>Control</kbd> (<kbd>⌃</kbd>) key by itself.
 
 ### Symbols
 
@@ -140,8 +142,7 @@ These generic commands are global. Commands such as `go word left` will work in 
 
 For repeating commands, useful voice commands are defined here: https://github.com/talonhub/community/blob/main/plugin/repeater/repeater.talon
 
-Try saying e.g. `go up fifth` will go up five lines.
-Try saying e.g. `select up third` to hit `shift-up` three times to select some lines in a text field.
+Say `go up fifth` or `go up five times` to go up five lines. `select up third` will press <kbd>Shift</kbd>+<kbd>↑</kbd> three times to select several lines of text.
 
 ### Window management
 
@@ -224,10 +225,7 @@ Notes:
 
 • If there no hidden files or folders, and the items are displayed in alphabetical order, you can typically issue the `follow <number>`, `file <number>` and `open <number>` commands based on the displayed order.
 
-To implement support for a new program, you need to implement the relevant file manager actions for your application and assert the user.file_manager tag.
-
-- There are a number of example implementations in the repository. Finder is a good example to copy and customize to your application as needed.
-  https://github.com/talonhub/community/blob/main/apps/finder/finder.py
+To implement support for a new program, implement the relevant file manager actions for your application and assert the `user.file_manager` tag. There are a number of example implementations in the repository. [Finder](apps/finder/finder.py) is a good example to copy and modify.
 
 ## Terminal commands
 

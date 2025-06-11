@@ -7,7 +7,11 @@ from talon import Context, Module, actions, speech_system
 from talon.grammar import Phrase
 
 # To change the phrase used to cancel commands, you must also adjust misc/cancel.talon
-cancelling_phrases = ["cancel that".split(), "fuck that".split()]
+cancelling_phrases = [
+    "cancel cancel".split(),
+    "cancel that".split(),
+    "fuck that".split(),
+]
 
 mod = Module()
 ctx = Context()
@@ -60,13 +64,14 @@ def pre_phrase(phrase: Phrase):
         cancel_entire_phrase(phrase)
         return
 
+
 def get_cancelled_phrase(words):
     for cancel_phrase in cancelling_phrases:
         n = len(cancel_phrase)
         before, after = words[:-n], words[-n:]
         if after == cancel_phrase:
             return before
-    
+
 
 def cancel_entire_phrase(phrase: Phrase):
     phrase["phrase"] = []

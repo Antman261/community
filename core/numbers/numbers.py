@@ -284,7 +284,9 @@ def number_prose_unprefixed(m) -> str:
     return m[0]
 
 
-@mod.capture(rule="(numb | numeral | noom) <user.number_prose_unprefixed>")
+@mod.capture(
+    rule="(numb | num | number | numeral | noom) <user.number_prose_unprefixed>"
+)
 def number_prose_prefixed(m) -> str:
     return m.number_prose_unprefixed
 

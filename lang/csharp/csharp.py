@@ -6,11 +6,6 @@ ctx = Context()
 ctx.matches = r"""
 code.language: csharp
 """
-ctx.lists["user.code_common_function"] = {
-    "integer": "int.TryParse",
-    "print": "Console.WriteLine",
-    "string": ".ToString",
-}
 
 operators = Operators(
     # code_operators_array
@@ -78,12 +73,6 @@ class UserActions:
 
     def code_insert_is_not_null():
         actions.auto_insert(" != null")
-
-    def code_break():
-        actions.auto_insert("break;")
-
-    def code_next():
-        actions.auto_insert("continue;")
 
     def code_insert_true():
         actions.auto_insert("true")

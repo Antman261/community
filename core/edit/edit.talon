@@ -25,8 +25,8 @@ scroll down: edit.page_down()
 # go left, go left left down, go 5 left 2 down
 # go word left, go 2 words right
 # pop <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
-drain: edit.word_left()
-step: edit.word_right()
+drain | (word tug): edit.word_left()
+step | (word pump): edit.word_right()
 
 tug: edit.left()
 pump: edit.right()
@@ -48,13 +48,13 @@ take pump: edit.extend_right()
 take north: edit.extend_line_up()
 take south: edit.extend_line_down()
 
-take drain: edit.extend_word_left()
-take step: edit.extend_word_right()
+take (drain | word tug): edit.extend_word_left()
+take (step | word pump): edit.extend_word_right()
 
 take head: edit.extend_line_start()
 take tail: edit.extend_line_end()
-take pager: edit.extend_file_start()
-take dager: edit.extend_file_end()
+take start: edit.extend_file_start()
+take end: edit.extend_file_end()
 
 # Indentation
 indent [more]: edit.indent_more()
@@ -89,7 +89,7 @@ disk: edit.save()
 disk oliver: edit.save_all()
 
 pour | trailer: edit.line_insert_down()
-drink | drinker: edit.line_insert_up()
+drink: edit.line_insert_up()
 
 emoji scout [<user.text>]:
     key(cmd-ctrl-space)

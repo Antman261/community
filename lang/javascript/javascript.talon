@@ -33,7 +33,6 @@ is loose: " == "
 is equal: " === "
 (isn't | is not) equal: " !== "
 <user.operator> fallback: " ?? "
-op null else: " ?? "
 <user.operator> quote var: user.insert_between("${", "}")
 
 chain length: ".length"
@@ -66,3 +65,10 @@ chain reduce short: user.cursorless_insert_snippet(".reduce($function, $initialV
 <user.operator> await: "await "
 dot {user.code_common_member_function}:
     user.insert_between(".{code_common_member_function}(", ")")
+state map: app.notify('ERROR: Command deprecated; please use "dot map"')
+state filter: app.notify('ERROR: Command deprecated; please use "dot filter"')
+state reduce: app.notify('ERROR: Command deprecated; please use "dot reduce"')
+
+state spread: "..."
+
+from import: user.insert_between(' from  "', '"')

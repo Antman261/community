@@ -90,9 +90,7 @@ Keys are defined in keys.py. The alphabet is used for A-Z. For the rest, search 
 
 For modifier keys, say `help modifiers`. For example, say `shift air` to press <kbd>Shift</kbd> + <kbd>A</kbd>, which types a capital `A`.
 
-On Windows, try commands such as
-
-- `control air` to press `control-a` and select all.
+On Windows, try commands such as:
 
 - `control air` to press <kbd>Control</kbd> + <kbd>A</kbd> and select all.
 
@@ -108,8 +106,7 @@ Say any combination of modifiers, symbols, alphabet, numbers and function keys t
 
 ### Symbols
 
-Some symbols are defined in keys.py, so you can say e.g. `control colon` to press those keys.
-https://github.com/talonhub/community/blob/main/core/keys/keys.py#L140
+Some symbols are defined in [symbols.py](core/keys/symbols.py), so you can say, e.g. `control colon` to press those keys.
 
 Some other symbols are defined here: https://github.com/talonhub/community/blob/main/plugin/symbols/symbols.talon
 

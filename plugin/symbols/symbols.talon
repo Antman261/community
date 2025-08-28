@@ -9,15 +9,15 @@ patch {user.symbol_key}:
     edit.line_insert_down()
 spam: ", "
 (pipe gap) | piper: " | "
-boom: ". "
-arrow: "->"
-dub arrow: "=>"
-empty round: "()"
-empty square: "[]"
-empty curly: "{}"
-empty diamond: "<>"
-empty quad: '""'
-empty twin: "''"
+# boom: ". "
+# arrow: "->"
+# dub arrow: "=>"
+# empty round: "()"
+# empty square: "[]"
+# empty curly: "{}"
+# empty diamond: "<>"
+# empty quad: '""'
+# empty twin: "''"
 empty escaped quad: '\\"\\"'
 empty escaped twin: "\\'\\'"
 empty escaped round: "\\(\\)"
@@ -62,10 +62,10 @@ big curly:
     insert("{}")
     key(left enter)
 
-slicer:
-    edit.line_end()
-    key(enter)
-    insert("- ")
+# slicer:
+#     edit.line_end()
+#     key(enter)
+#     insert("- ")
 
 end gap:
     edit.line_end()

@@ -81,7 +81,9 @@ cut that: edit.cut()
 (pasta match) | spaghetti: edit.paste_match_style()
 
 # Undo/redo
-(undo that | blooper | blundor): edit.undo()
+(undo that | blooper | blundor):
+    edit.undo()
+    user.increment_command_counter('blundor')
 (redo that | yes indeed): edit.redo()
 
 # Save

@@ -42,3 +42,5 @@ bottom center small: BOTTOM_CENTER_SMALL
 center: CENTER
 full: FULL
 fullscreen: FULLSCREEN
+stream full: STREAM_FULL
+stream: STREAM_FULL

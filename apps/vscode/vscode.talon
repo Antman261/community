@@ -19,7 +19,7 @@ pop ecky: user.vscode("workbench.view.extensions")
 pop runner: user.vscode("workbench.view.debug")
 pop git: user.vscode("workbench.view.scm")
 pop tester: user.vscode("workbench.view.testing.focus")
-flick side: user.vscode("workbench.action.toggleSidebarVisibility")
+flick (side | left): user.vscode("workbench.action.toggleSidebarVisibility")
 flick right [side]: key(cmd-alt-b)
 search pump: user.vscode("search.action.focusNextSearchResult")
 search tug: user.vscode("search.action.focusPreviousSearchResult")
@@ -117,7 +117,7 @@ dock chuck:
     sleep(150ms)
 
 # Language Features
-fixer: user.vscode("editor.action.quickFix")
+quick fix | fixer: user.vscode("editor.action.quickFix")
 flick (sugger | suggest): user.vscode("editor.action.triggerSuggest")
 flick hint: user.vscode("editor.action.triggerParameterHints")
 definition peek: user.vscode("editor.action.peekDefinition")

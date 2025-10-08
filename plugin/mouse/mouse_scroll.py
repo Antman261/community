@@ -318,8 +318,9 @@ def get_window_containing(x: float, y: float):
     # on windows, check the active_window first since ui.windows() is not z-ordered
     if app.platform == "windows" and ui.active_window().rect.contains(x, y):
         return ui.active_window()
-
     for window in ui.windows():
+        if window.app.name == "AssistiveControl":
+            continue
         if window.rect.contains(x, y):
             return window
 

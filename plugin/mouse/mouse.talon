@@ -32,7 +32,8 @@ wheel tiny up: user.mouse_scroll_up(0.2)
 wheel tiny up here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_up(0.2)
-wheel gaze: user.mouse_gaze_scroll()
+wheel scroll: user.mouse_gaze_scroll()
+wheel (gaze | guys): user.mouse_gaze_scroll()
 wheel gaze here:
     user.mouse_move_center_active_window()
     user.mouse_gaze_scroll()

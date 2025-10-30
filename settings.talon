@@ -25,7 +25,7 @@ settings():
     user.mouse_continuous_scroll_amount = 8
 
     # Set the scroll multiplier for gaze scroll
-    user.mouse_gaze_scroll_speed_multiplier = 1.0
+    user.mouse_gaze_scroll_speed_multiplier = 0.075
 
     # Set the maximum acceleration factor when scrolling continuously. 1=constant speed/no acceleration.
     user.mouse_continuous_scroll_acceleration = 1
@@ -47,7 +47,7 @@ settings():
     user.hiss_scroll_debounce_time = 100
 
     # If `true`, hide the continuous scroll/gaze scroll GUI
-    user.mouse_hide_mouse_gui = false
+    user.mouse_hide_mouse_gui = true
 
     # If `true`, hide the cursor when enabling zoom mouse
     user.mouse_wake_hides_cursor = false

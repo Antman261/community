@@ -15,6 +15,7 @@ class Language:
 # here which have a supported language mode; that's why there are so many
 # commented out entries.
 code_languages = [
+    Language("zig", "zig", ["zig", "zon"]),
     # Language("assembly", "assembly", ["asm", "s"]),
     # Language("bash", "bash", ["sh", "bashbook"]),
     Language("batch", "batch", ["bat"]),

@@ -16,52 +16,52 @@ right drag | righty drag:
     # close the mouse grid
     user.grid_close()
 end drag | drag end: user.mouse_drag_end()
-wheel down: user.mouse_scroll_down()
-wheel down here:
+spin down: user.mouse_scroll_down()
+spin down here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down()
-wheel tiny [down]: user.mouse_scroll_down(0.2)
-wheel tiny [down] here:
+spin tiny [down]: user.mouse_scroll_down(0.2)
+spin tiny [down] here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down(0.2)
-wheel up: user.mouse_scroll_up()
-wheel up here:
+spin up: user.mouse_scroll_up()
+spin up here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_up()
-wheel tiny up: user.mouse_scroll_up(0.2)
-wheel tiny up here:
+spin tiny up: user.mouse_scroll_up(0.2)
+spin tiny up here:
     user.mouse_move_center_active_window()
-    user.mouse_scroll_up(0.2)
-wheel scroll: user.mouse_gaze_scroll()
-gaze scroll: user.mouse_gaze_scroll()
-wheel (gaze | guys): user.mouse_gaze_scroll()
-wheel gaze here:
+    user.mouse_scroll_up(0.2)Maybe I should
+spin scroll: user.mouse_gaze_scroll()
+gaze spin: user.mouse_gaze_scroll()
+spin (gaze | guys): user.mouse_gaze_scroll()
+spin gaze here:
     user.mouse_move_center_active_window()
     user.mouse_gaze_scroll()
-wheel left: user.mouse_scroll_left()
-wheel left here:
+spin left: user.mouse_scroll_left()
+spin left here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_left()
-wheel tiny left: user.mouse_scroll_left(0.5)
-wheel tiny left here:
+spin tiny left: user.mouse_scroll_left(0.5)
+spin tiny left here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_left(0.5)
-wheel right: user.mouse_scroll_right()
-wheel right here:
+spin right: user.mouse_scroll_right()
+spin right here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_right()
-wheel tiny right: user.mouse_scroll_right(0.5)
-wheel tiny right here:
+spin tiny right: user.mouse_scroll_right(0.5)
+spin tiny right here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_right(0.5)
-wheel {user.continuous_scrolling_direction}:
+spin {user.continuous_scrolling_direction}:
     user.mouse_scroll_continuous(continuous_scrolling_direction)
-wheel {user.continuous_scrolling_direction} here:
+spin {user.continuous_scrolling_direction} here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_continuous(continuous_scrolling_direction)
-wheel {user.continuous_scrolling_direction} <number_small>:
+spin {user.continuous_scrolling_direction} <number_small>:
     user.mouse_scroll_continuous(continuous_scrolling_direction, number_small)
-wheel {user.continuous_scrolling_direction} here <number_small>:
+spin {user.continuous_scrolling_direction} here <number_small>:
     user.mouse_move_center_active_window()
     user.mouse_scroll_continuous(continuous_scrolling_direction, number_small)
 copy mouse position: user.copy_mouse_position()

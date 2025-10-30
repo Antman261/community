@@ -44,3 +44,4 @@ full: FULL
 fullscreen: FULLSCREEN
 stream full: STREAM_FULL
 stream: STREAM_FULL
+tray: TRAY_FULL

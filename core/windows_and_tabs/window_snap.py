@@ -282,6 +282,7 @@ _snap_positions = {
     "FULL": RelativeScreenPos(0, 0, 1, 1),
     "FULLSCREEN": RelativeScreenPos(0, 0, 1, 1),
     "STREAM_FULL": RelativeScreenPos(0, 0, 0.7704, 1),
+    "TRAY_FULL": RelativeScreenPos(0, 0, 0.81224, 1),
 }
 
 

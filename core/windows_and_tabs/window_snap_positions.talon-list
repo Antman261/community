@@ -45,3 +45,4 @@ fullscreen: FULLSCREEN
 stream full: STREAM_FULL
 stream: STREAM_FULL
 tray: TRAY_FULL
+tray left: TRAY_LEFT

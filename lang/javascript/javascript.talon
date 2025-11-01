@@ -35,28 +35,6 @@ is equal: " === "
 <user.operator> fallback: " ?? "
 <user.operator> quote var: user.insert_between("${", "}")
 
-chain length: ".length"
-chain {user.code_common_member_function}:
-    user.insert_between(".{code_common_member_function}(", ")")
-chain {user.code_common_member_function_with_lambda}:
-    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(($args) => ($value))")
-chain {user.code_common_member_function_with_lambda} block:
-    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(($args) => {{\n\t$body\n}})")
-chain {user.code_common_member_function_with_lambda} short:
-    user.insert_between(".{code_common_member_function_with_lambda}(", ")")
-chain {user.code_common_member_function_with_lambda} <phrase>:
-    name = user.formatted_text(phrase, "PRIVATE_CAMEL_CASE")
-    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(({name}) => ($value))")
-chain {user.code_common_member_function_with_lambda} block <phrase>:
-    name = user.formatted_text(phrase, "PRIVATE_CAMEL_CASE")
-    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(({name}) => {{\n\t$body\n}})")
-
-chain reduce:
-    user.cursorless_insert_snippet(".reduce((acc, val) => ($value), $initialValue)")
-chain reduce block:
-    user.cursorless_insert_snippet(".reduce((acc, val) => {{\n$body\n}}, $initialValue)")
-chain reduce short: user.cursorless_insert_snippet(".reduce($function, $initialValue)")
-
 <user.operator> const: "const "
 <user.operator> let: "let "
 <user.operator> var: "var "

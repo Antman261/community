@@ -30,7 +30,7 @@ code_languages = [
     # Language("gdb", "g d b", ["gdb"]),
     # Language("go", ["go lang", "go language"], ["go"]),
     # Language("java", "java", ["java"]),
-    Language("javascript", "java script", ["js"]),
+    Language("javascript", "java script", ["js", "mjs"]),
     Language("javascriptreact", "java script react", ["jsx"]),
     # Language("jsonl", "json lines", ["jsonl"]),
     # Language("kotlin", "kotlin", ["kt"]),

@@ -1,4 +1,5 @@
 import logging
+import random
 import re
 from abc import ABC, abstractmethod
 from typing import Callable, Optional, Union
@@ -155,6 +156,23 @@ class CapitalizeFormatter(Formatter):
         return unformat_upper(text)
 
 
+class SarcasmFormatter(Formatter):
+    def format(self, text: str) -> str:
+        """Capitalize every second letter, for sarcasm"""
+        formatted_text = ""
+        lower_count = 0
+        for idx, letter in enumerate(text):
+            should_capitalize = idx % 2 > 0 and random.randint(0, 7) > 1
+            lower_count = 0 if should_capitalize else lower_count + 1
+            formatted_text += (
+                letter.capitalize() if should_capitalize or lower_count > 2 else letter
+            )
+        return formatted_text
+
+    def unformat(self, text: str) -> str:
+        return unformat_upper(text)
+
+
 class SentenceFormatter(Formatter):
     def format(self, text: str) -> str:
         """Capitalize first word if it's already all lower case"""
@@ -233,6 +251,7 @@ formatter_list = [
     SentenceFormatter("CAPITALIZE_FIRST_WORD"),
     # This is the formatter that actually just capitalizes the first word
     CapitalizeFormatter("CAPITALIZE"),
+    SarcasmFormatter("SARCASM"),
     CodeFormatter("NO_SPACES", "", lower, lower),
     CodeFormatter("PRIVATE_CAMEL_CASE", "", lower, capitalize),
     CodeFormatter("PUBLIC_CAMEL_CASE", "", capitalize, capitalize),

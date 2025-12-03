@@ -8,7 +8,7 @@ win require: insert("os: windows\n")
 mac require: insert("os: mac\n")
 linux require: insert("os: linux\n")
 title require: insert("win.title: ")
-application [require] [{user.talon_apps}]:
+(application | app) require [{user.talon_apps}]:
     app = "{talon_apps}\n" or ""
     insert("app: {app}")
 mode require [{user.talon_modes}]:

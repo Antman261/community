@@ -31,6 +31,7 @@ bottom right two thirds: BOTTOM_RIGHT_TWO_THIRDS
 bottom center third: BOTTOM_CENTER_THIRD
 top left small: TOP_LEFT_SMALL
 top right small: TOP_RIGHT_SMALL
+top right tiny: TOP_RIGHT_TINY
 top left large: TOP_LEFT_LARGE
 top right large: TOP_RIGHT_LARGE
 top center small: TOP_CENTER_SMALL
@@ -46,3 +47,5 @@ stream full: STREAM_FULL
 stream: STREAM_FULL
 tray: TRAY_FULL
 tray left: TRAY_LEFT
+tray top right: TRAY_TOP_RIGHT
+tray top left: TRAY_TOP_LEFT

@@ -269,6 +269,7 @@ _snap_positions = {
     # Alternate (simpler) spoken forms for sixths
     "TOP_LEFT_SMALL": RelativeScreenPos(0, 0, 1 / 3, 0.5),
     "TOP_RIGHT_SMALL": RelativeScreenPos(2 / 3, 0, 1, 0.5),
+    "TOP_RIGHT_TINY": RelativeScreenPos(4 / 5, 0, 1, 2 / 5),
     "TOP_LEFT_LARGE": RelativeScreenPos(0, 0, 2 / 3, 0.5),
     "TOP_RIGHT_LARGE": RelativeScreenPos(1 / 3, 0, 1, 0.5),
     "TOP_CENTER_SMALL": RelativeScreenPos(1 / 3, 0, 2 / 3, 0.5),
@@ -282,9 +283,13 @@ _snap_positions = {
     "FULL": RelativeScreenPos(0, 0, 1, 1),
     "FULLSCREEN": RelativeScreenPos(0, 0, 1, 1),
     "STREAM_FULL": RelativeScreenPos(0, 0, 0.7704, 1),
-    "TRAY_FULL": RelativeScreenPos(0, 0, 0.81224, 1),
-    "TRAY_LEFT": RelativeScreenPos(0.2, 0, 1, 1),
+    "TRAY_FULL": RelativeScreenPos(0, 0, 0.8125, 1),
+    "TRAY_LEFT": RelativeScreenPos(0.1875, 0, 1, 1),
+    "TRAY_TOP_RIGHT": RelativeScreenPos(0.8125, 0, 1, 0.7),
+    "TRAY_TOP_LEFT": RelativeScreenPos(0, 0, 0.1875, 0.62),
+    # "TRAY_mFULL": RelativeScreenPos(0.1875, 0, 1, 1),
 }
+
 
 
 @mod.capture(rule="{user.window_snap_positions}")

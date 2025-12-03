@@ -5,22 +5,23 @@ browser.host: github.com
 
 # site wide shortcuts
 focus search: key(s)
-go to notifications: insert("gn")
-go to dashboard: insert("gd")
+<user.teleport> notifications: insert("gn")
+<user.teleport> dashboard: insert("gd")
 (keyboard shortcuts show | show keyboard shortcuts): key(?)
+<user.teleport> shortcuts: key(?)
 (selection move down | move selection down): key(j)
 (selection move up | move selection up): key(k)
 (selection toggle | toggle selection): key(x)
 (selection open | open selection): key(o)
 
 # repositories
-go to code: insert("gc")
-go to issues: insert("gi")
-go to pull requests: insert("gp")
-go to wiki: insert("gw")
-go to actions: insert("ga")
-go to projects: insert("gb")
-go to discussions: insert("gg")
+<user.teleport> code: insert("gc")
+<user.teleport> issues: insert("gi")
+<user.teleport> pull requests: insert("gp")
+<user.teleport> wiki: insert("gw")
+<user.teleport> actions: insert("ga")
+<user.teleport> projects: insert("gb")
+<user.teleport> discussions: insert("gg")
 
 # source code editing
 [web] editor open: key(.)
@@ -65,6 +66,6 @@ assignee set: key(a)
 label set: key(l)
 
 # actions
-go to workflow: insert("gf")
+<user.teleport> workflow: insert("gf")
 timestamps toggle: key(shift-t)
 fullscreen toggle: key(shift-f)

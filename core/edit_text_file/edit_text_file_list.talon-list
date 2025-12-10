@@ -3,10 +3,10 @@ list: user.edit_text_file
 
 additional words: ../../lists/vocabulary.talon-list
 vocabulary: ../../lists/vocabulary.talon-list
-alphabet: core/keys/letter.talon-list
+alphabet: ../../core/letter.talon-list
 homophones: core/homophones/homophones.csv
 search engines: core/websites_and_search_engines/search_engine.talon-list
-websites: core/websites_and_search_engines/website.talon-list
+websites: ../../lists/website.talon-list
 
 unix utilities: tags/terminal/unix_utility.talon-list
 

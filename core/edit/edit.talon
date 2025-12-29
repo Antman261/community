@@ -58,11 +58,12 @@ take end: edit.extend_file_end()
 
 # Indentation
 indent [more]: edit.indent_more()
-(indent less | out dent): edit.indent_less()
+(indent less | dedent): edit.indent_less()
 
 # Delete
 drill: edit.delete_right()
 scrum: edit.delete()
+# scrap: edit.delete_word()
 scrap:
     edit.extend_word_left()
     edit.delete()
@@ -83,7 +84,7 @@ cut that: edit.cut()
 # Undo/redo
 (undo that | blooper | blundor):
     edit.undo()
-    user.increment_command_counter('blundor')
+    # user.increment_command_counter('blundor')
 (redo that | yes indeed): edit.redo()
 
 # Save

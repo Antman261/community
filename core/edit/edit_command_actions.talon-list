@@ -9,6 +9,8 @@ copper: copyToClipboard
 cut it: cutToClipboard
 pasta: pasteFromClipboard
 paster: pasteFromClipboard
+#clone: insertCopyAfter
+
 
 deli: delete
 dellip: delete

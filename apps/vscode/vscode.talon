@@ -14,11 +14,11 @@ pop view [<user.text>]:
     insert(user.text or "")
 
 # Sidebar
-pop tree: user.vscode("workbench.view.explorer")
-pop ecky: user.vscode("workbench.view.extensions")
-pop runner: user.vscode("workbench.view.debug")
-pop git: user.vscode("workbench.view.scm")
-pop tester: user.vscode("workbench.view.testing.focus")
+tree pop: user.vscode("workbench.view.explorer")
+ecky pop: user.vscode("workbench.view.extensions")
+runner pop: user.vscode("workbench.view.debug")
+git pop: user.vscode("workbench.view.scm")
+tester pop: user.vscode("workbench.view.testing.focus")
 flick (side | left): user.vscode("workbench.action.toggleSidebarVisibility")
 flick right [side]: key(cmd-alt-b)
 search pump: user.vscode("search.action.focusNextSearchResult")
@@ -43,15 +43,12 @@ scout symbol all [<user.text>]:
     insert(text or "")
 
 # Panels
-<user.teleport> (commander | comms | palette): user.command_palette()
+commands <user.teleport>: user.command_palette()
 panel control: user.vscode("workbench.panel.repl.view.focus")
-<user.teleport> output: user.vscode("workbench.panel.output.focus")
-<user.teleport> problems: user.vscode("workbench.panel.markers.view.focus")
-problem show: user.vscode("workbench.panel.markers.view.focus")
+output <user.teleport>: user.vscode("workbench.panel.output.focus")
+problems <user.teleport>: user.vscode("workbench.panel.markers.view.focus")
 (low | flick) (dog | dob): user.vscode("workbench.action.togglePanel")
-term show:
-    user.vscode("workbench.action.terminal.focus")
-    sleep(250ms)
+term <user.teleport>: user.vscode_and_wait("workbench.action.terminal.toggleTerminal")
 <user.teleport> (doc (<number_small> | <user.ordinals>) | <user.ordinals> doc):
     num = number_small or ordinals
     key("cmd-{num}")
@@ -229,7 +226,6 @@ term tug: user.vscode("workbench.action.terminal.focusPrevious")
 term split: user.vscode("workbench.action.terminal.split")
 term zoom: user.vscode("workbench.action.toggleMaximizedPanel")
 #term chuck: user.vscode("workbench.action.terminal.kill")
-(<user.teleport> | flick) term: user.vscode_and_wait("workbench.action.terminal.toggleTerminal")
 term scroll up: user.vscode("workbench.action.terminal.scrollUp")
 term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)

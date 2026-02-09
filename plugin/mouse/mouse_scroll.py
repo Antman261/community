@@ -165,7 +165,12 @@ class Actions:
 
     def mouse_scroll_stop() -> bool:
         """Stops scrolling"""
-        global scroll_job, gaze_job, continuous_scroll_mode, control_mouse_forced, continuous_scrolling_speed_factor
+        global \
+            scroll_job, \
+            gaze_job, \
+            continuous_scroll_mode, \
+            control_mouse_forced, \
+            continuous_scrolling_speed_factor
 
         continuous_scroll_mode = ""
         continuous_scrolling_speed_factor = 1.0
@@ -296,6 +301,9 @@ def scroll_continuous_helper():
         actions.mouse_scroll(0, scroll_delta)
 
 
+_window_cache = None
+
+
 def scroll_gaze_helper():
     x, y = ctrl.mouse_pos()
 
@@ -316,12 +324,17 @@ def scroll_gaze_helper():
 
 def get_window_containing(x: float, y: float):
     # on windows, check the active_window first since ui.windows() is not z-ordered
+    global _window_cache
+    if _window_cache is not None and _window_cache.rect.contains(x, y):
+        return _window_cache
     if app.platform == "windows" and ui.active_window().rect.contains(x, y):
         return ui.active_window()
     for window in ui.windows():
         if window.app.name == "AssistiveControl":
             continue
         if window.rect.contains(x, y):
+            print("window:", window)
+            _window_cache = window
             return window
 
     return None

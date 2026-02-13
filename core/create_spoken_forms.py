@@ -221,7 +221,7 @@ def create_single_spoken_form(source: str):
     return mapped_source
 
 
-def create_exploded_forms(spoken_forms: List[str]):
+def create_exploded_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
     """Exploded common packed words into separate words"""
     # TODO: This could be moved somewhere else, possibly seeded from something like
     # words to replace...
@@ -251,7 +251,7 @@ def create_exploded_forms(spoken_forms: List[str]):
     return new_spoken_forms
 
 
-def create_extension_forms(spoken_forms: List[str]):
+def create_extension_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
     """Add extension forms"""
     new_spoken_forms = []
 
@@ -264,6 +264,8 @@ def create_extension_forms(spoken_forms: List[str]):
         for substring in line.split(" "):
             # NOTE: If we ever run in to file extensions in the middle of file name, the
             # truncated form is going to be busted. ie: foo.md.disabled
+            if substring in words_to_exclude:
+                continue
 
             if substring in file_extensions_map.keys():
                 file_extension_forms.append(file_extensions_map[substring])
@@ -284,7 +286,7 @@ def create_extension_forms(spoken_forms: List[str]):
     return set(dict.fromkeys(new_spoken_forms))
 
 
-def create_cased_forms(spoken_forms: List[str]):
+def create_cased_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
     """Add lower and upper case forms"""
     new_spoken_forms = []
 
@@ -293,6 +295,8 @@ def create_cased_forms(spoken_forms: List[str]):
         upper_forms = []
         # print(line)
         for substring in line.split(" "):
+            if substring in words_to_exclude:
+                continue
             if substring.isupper():
                 lower_forms.append(substring.lower())
                 upper_forms.append(" ".join(substring))
@@ -306,7 +310,7 @@ def create_cased_forms(spoken_forms: List[str]):
     return set(dict.fromkeys(new_spoken_forms))
 
 
-def create_abbreviated_forms(spoken_forms: List[str]):
+def create_abbreviated_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
     """Add abbreviated case forms"""
     new_spoken_forms = []
 
@@ -315,6 +319,8 @@ def create_abbreviated_forms(spoken_forms: List[str]):
         unabbreviated_forms = []
         abbreviated_forms = []
         for substring in line.split(" "):
+            if substring in words_to_exclude:
+                continue
             if substring in swapped_abbreviation_map.keys():
                 abbreviated_forms.append(swapped_abbreviation_map[substring])
             else:
@@ -327,7 +333,7 @@ def create_abbreviated_forms(spoken_forms: List[str]):
     return set(dict.fromkeys(new_spoken_forms))
 
 
-def create_spoken_number_forms(source: List[str]):
+def create_spoken_number_forms(source: List[str], words_to_exclude: list[str] = []):
     """
     Create a list of spoken forms by transforming numbers in source into spoken forms.
     This creates a first pass of spoken forms with numbers translated, but will go
@@ -353,6 +359,8 @@ def create_spoken_number_forms(source: List[str]):
     has_spoken_form_years = False
 
     for substring in source:
+        if substring in words_to_exclude:
+            continue
         # for piece in pieces:
         # substring = piece.group(0)
         length = len(substring)
@@ -394,7 +402,7 @@ def create_spoken_number_forms(source: List[str]):
     return set(dict.fromkeys(spoken_forms))
 
 
-def create_spoken_forms_from_regex(source: str, pattern: re.Pattern):
+def create_spoken_forms_from_regex(source: str, pattern: re.Pattern, words_to_exclude: Optional[list[str]] = []):
     """
     Creates a list of spoken forms for source using the provided regex pattern.
     For numeric pieces detected by the regex, generates both digit-wise and full
@@ -415,7 +423,7 @@ def create_spoken_forms_from_regex(source: str, pattern: re.Pattern):
     ]
 
     for func in transforms:
-        spoken_forms = func(spoken_forms)
+        spoken_forms = func(spoken_forms, words_to_exclude)
 
     return list(dict.fromkeys(spoken_forms))
 
@@ -470,12 +478,12 @@ class Actions:
         """Create spoken forms for a given source"""
 
         spoken_forms_without_symbols = create_spoken_forms_from_regex(
-            source, REGEX_NO_SYMBOLS
+            source, REGEX_NO_SYMBOLS, words_to_exclude or []
         )
 
         # todo: this could probably be optimized out if there's no symbols
         spoken_forms_with_symbols = create_spoken_forms_from_regex(
-            source, REGEX_WITH_SYMBOLS
+            source, REGEX_WITH_SYMBOLS, words_to_exclude or []
         )
 
         # some may be identical, so ensure the list is reduced
@@ -484,7 +492,7 @@ class Actions:
         # only generate the subsequences if requested
         if generate_subsequences:
             # todo: do we care about the subsequences that are excluded.
-            # the only one that seems relevant are the full spoken form for
+            # the conly one that seems relevant are the full spoken form for
             spoken_forms.update(
                 generate_string_subsequences(
                     spoken_forms_without_symbols[-1],

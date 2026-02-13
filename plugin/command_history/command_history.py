@@ -1,8 +1,6 @@
 from typing import Optional
-
+from talon.grammar import Phrase
 from talon import Module, actions, imgui, settings, speech_system
-
-from ..subtitles.on_phrase import skip_phrase
 
 # We keep command_history_size lines of history, but by default display only
 # command_history_display of them.
@@ -12,6 +10,19 @@ mod.setting("command_history_display", type=int, default=10)
 
 hist_more: bool = False
 history: list[str] = []
+
+
+def skip_phrase(phrase: Phrase) -> bool:
+    return not phrase.get("phrase") or skip_phrase_in_sleep(phrase)
+
+
+def skip_phrase_in_sleep(phrase: Phrase) -> bool:
+    """Returns true if the rule is <phrase> in sleep mode"""
+    return (
+        not actions.speech.enabled()
+        and len(phrase["parsed"]) == 1
+        and phrase["parsed"][0]._name == "___ltphrase_gt__"
+    )
 
 
 def on_phrase(j):

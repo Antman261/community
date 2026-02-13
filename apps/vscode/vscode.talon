@@ -106,7 +106,7 @@ dock rename:
     user.vscode("fileutils.renameFile")
     sleep(150ms)
 disk:
-    edit.save()
+    edit.save_all()
     sleep(150ms)
     user.vscode("hideSuggestWidget")
 dock chuck:

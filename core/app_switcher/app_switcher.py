@@ -310,33 +310,42 @@ def update_overrides(name, flags):
         update_running_list()
 
 
+def _try_get_running_app(name: str) -> ui.App | None:
+    """Try to get an application by its name"""
+    if name.lower() not in running_application_dict:
+        if len(name) < 3:
+            raise RuntimeError(f'Skipped getting app: "{name}" has less than 3 chars.')
+        for running_name, full_application_name in ctx.lists["self.running"].items():
+            if running_name == name or running_name.lower().startswith(name.lower()):
+                name = full_application_name
+                break
+    for application in ui.apps(background=False):
+        if application.name == name or (
+            app.platform == "windows"
+            and os.path.basename(application.exe).lower() == name
+        ):
+            return application
+
+
 @mod.action_class
 class Actions:
+    def get_running_apps() -> list[str]:
+        """"""
+        return ctx.lists["self.running"]
+
+    def try_get_running_app(name: str) -> ui.App | None:
+        """Try to get an application by its name"""
+        return _try_get_running_app(name)
+
     def get_running_app(name: str) -> ui.App:
         """Get the first available running app with `name`."""
         # We should use the capture result directly if it's already in the list
         # of running applications. Otherwise, name is from <user.text> and we
         # can be a bit fuzzier
-        if name.lower() not in running_application_dict:
-            if len(name) < 3:
-                raise RuntimeError(
-                    f'Skipped getting app: "{name}" has less than 3 chars.'
-                )
-            for running_name, full_application_name in ctx.lists[
-                "self.running"
-            ].items():
-                if running_name == name or running_name.lower().startswith(
-                    name.lower()
-                ):
-                    name = full_application_name
-                    break
-        for application in ui.apps(background=False):
-            if application.name == name or (
-                app.platform == "windows"
-                and os.path.basename(application.exe).lower() == name
-            ):
-                return application
-        raise RuntimeError(f'App not running: "{name}"')
+        application = _try_get_running_app(name)
+        if application is None:
+            raise RuntimeError(f'App not running: "{name}"')
+        return application
 
     def switcher_focus(name: str):
         """Focus a new application by name"""

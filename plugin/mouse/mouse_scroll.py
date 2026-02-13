@@ -322,10 +322,18 @@ def scroll_gaze_helper():
     actions.mouse_scroll(amount)
 
 
+def check_cached_window(x: float, y: float):
+    if _window_cache is not None:
+        rect = getattr(_window_cache, "rect", None)
+        if rect is not None and rect.contains(x, y):
+            return True
+    return False
+
+
 def get_window_containing(x: float, y: float):
     # on windows, check the active_window first since ui.windows() is not z-ordered
     global _window_cache
-    if _window_cache is not None and _window_cache.rect.contains(x, y):
+    if check_cached_window(x, y):
         return _window_cache
     if app.platform == "windows" and ui.active_window().rect.contains(x, y):
         return ui.active_window()

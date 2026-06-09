@@ -8,6 +8,15 @@ language: javascript | typescript | javascriptreact | typescriptreact
 $1.insertionFormatter: PRIVATE_CAMEL_CASE
 -
 $1($2) {
+    $0u
+}
+---
+
+language: zig
+
+$1.insertionFormatter: CAMEL_CASE
+-
+pub fn $1(self: *@This()$2) $3 {
     $0
 }
 ---

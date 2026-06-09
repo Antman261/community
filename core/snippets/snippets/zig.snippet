@@ -1,0 +1,59 @@
+language: zig
+---
+
+name: structInitializer
+phrase: initializer
+insertionScope: statement
+-
+pub fn init(allocator: std.mem.Allocator$1) $2 {
+  return .{
+    $0
+  };
+}
+---
+
+name: structDeinitializer
+phrase: de init
+insertionScope: statement
+-
+pub fn deinit(self: *@This()$1) void {
+  $0
+}
+---
+
+name: publicFunction
+phrase: pub funk
+insertionScope: statement
+-
+pub fn $1($2) $3 {
+    $0
+}
+---
+
+name: incrementOne
+phrase: increment one
+-
++= 1
+---
+
+name: whileContinue
+phrase: while continue
+-
+while ($1) : ($2) {
+    $0
+}
+---
+
+name: import
+phrase: import
+-
+const $1 = @import("$0");
+---
+
+name: testCase
+phrase: test
+-
+test "$1" {
+  $0
+}
+---

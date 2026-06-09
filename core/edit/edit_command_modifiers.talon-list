@@ -6,5 +6,5 @@ paragraph: paragraph
 line: line
 head: lineStart
 tail: lineEnd
-pager: fileStart
-dager: fileEnd
+file start: fileStart
+file end: fileEnd

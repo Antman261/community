@@ -25,15 +25,15 @@ scroll down: edit.page_down()
 # go left, go left left down, go 5 left 2 down
 # go word left, go 2 words right
 # pop <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
-drain | (word tug): edit.word_left()
+(pop drain) | (word tug): edit.word_left()
 step | (word pump): edit.word_right()
 
 tug: edit.left()
 pump: edit.right()
 north: edit.up()
 south: edit.down()
-head: edit.line_start()
-tail: edit.line_end()
+pop head: edit.line_start()
+pop tail: edit.line_end()
 
 pop north: edit.file_start()
 pop south: edit.file_end()

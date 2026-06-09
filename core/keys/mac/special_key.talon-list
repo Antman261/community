@@ -9,6 +9,9 @@ void: space
 tab: tab
 insert: insert
 deli: backspace
+delete: backspace
+delly: backspace
+deller: backspace
 dellip: backspace
 drill: delete
 minus: minus

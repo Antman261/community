@@ -4,8 +4,8 @@ tag(): user.messaging
 tag(): user.emoji
 
 # Navigation: QuickSwitcher
-{user.discord_destination} [<user.text>]:
-    user.discord_quick_switcher(user.discord_destination, user.text or "")
+# {user.discord_destination} [<user.text>]:
+#     user.discord_quick_switcher(user.discord_destination, user.text or "")
 switcher: user.discord_quick_switcher("", "")
 
 # Navigation: Channels

@@ -13,5 +13,7 @@ paster: pasteFromClipboard
 
 
 deli: delete
+deli: delete
+deller: delete
 dellip: delete
 delt: delete

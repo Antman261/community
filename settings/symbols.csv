@@ -1,0 +1,47 @@
+Symbol,Mode (command/dictation/both),Spoken Forms (separated with commas)
+`,command,brick
+",",command,drip
+.,command,dot
+;,both,semicolon
+;,command,semi
+:,both,colon
+:,command,stack
+?,both,question mark
+?,command,quest
+!,both,exclamation mark,exclamation point
+!,command,bang
+*,both,asterisk
+*,command,snow
+#,both,hash sign,number sign
+#,command,pound
+%,both,percent sign
+%,command,percy,percent
+@,both,at sign
+&,both,ampersand,and sign
+&,command,amper
+-,both,hyphen
+-,command,minus,dash
+=,command,equals,eccles
++,command,plus
+~,command,tilde
+_,command,score
+(,both,L paren,left paren
+(,command,lepper
+),both,R paren,right paren
+),command,repper
+[,command,brack,L square,left square,lacquer,lacker
+],command,R brack,R bracket,right bracket,R square,right square,racker
+/,both,forward slash
+/,command,strock
+\,command,backstroke
+{,command,brace,left curly,lef bracer
+},command,R brace,right brace,R curly bracket,right curly bracket,racer
+<,command,angle,L Angle,left angle,less than,langle
+>,command,rangle,R angle,right angle,greater than
+^,command,tangle
+|,command,pipe
+',command,single
+"""",command,double
+$,both,dollar sign
+$,command,dollar
+£,both,pound sign

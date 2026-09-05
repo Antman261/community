@@ -61,6 +61,9 @@ settings():
     # If `true`, start mouse grid numbering on the bottom left (vs. top left)
     # user.grids_put_one_bottom_left = true
 
+    # If `true`, show a zoomed in version of the mouse grid when it becomes sufficiently small
+    user.grid_show_zoomed = true
+
     # Set the default number of command history lines to display
     user.command_history_display = 50
 
@@ -94,11 +97,20 @@ settings():
     # -width windows are resized to stay full-height/width.
     # user.window_snap_screen = "size aware"
 
+    # Mode enabled on Talon launch (command by default; dictation or sleep are other options)
+    # user.initial_mode = "sleep"
+
     # Puts Talon into sleep mode if no commands are spoken for a defined period of time.
     # user.listening_timeout_minutes = 5
 
     # Time in seconds to wait for the clipboard to change when trying to get selected text
     # user.selected_text_timeout = 0.25
+
+    # Time in seconds to sleep after inserting text with `insert_between` (e.g. when using paired delimiters like 'box' or 'round'), before moving the cursor back. Useful to set on a per-application basis, to prevent moving the moving the cursor before text is inserted.
+    # user.insert_between_wait = 0
+
+    # If deprecated commands should throw an exception, which stops the commands from running. You might find this helps you learn the new replacement commands faster.
+    # user.strict_command_deprecation = true
 
 # Uncomment to enable the curse yes/curse no commands (show/hide mouse cursor).
 # See issue #688 for more detail: https://github.com/talonhub/community/issues/688

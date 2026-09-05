@@ -8,9 +8,8 @@ from talon.grammar import Phrase
 
 # To change the phrase used to cancel commands, you must also adjust misc/cancel.talon
 cancelling_phrases = [
-    "cancel cancel".split(),
-    "cancel that".split(),
-    "fuck that".split(),
+    ["cancel", "cancel"],
+    ["cancel", "that"],
 ]
 
 mod = Module()

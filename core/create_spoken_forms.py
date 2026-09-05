@@ -1,8 +1,9 @@
 import itertools
 import re
 from collections import defaultdict
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, List, Mapping, Optional
+from typing import Any, Optional
 
 from talon import Module, actions
 
@@ -89,7 +90,6 @@ def create_spoken_form_for_number(num: int):
     """Creates a spoken form for an integer"""
 
     n3 = []
-    r1 = ""
     # create numeric string
     ns = str(num)
     for k in range(3, 33, 3):
@@ -98,14 +98,12 @@ def create_spoken_form_for_number(num: int):
         # break if end of ns has been reached
         if q < -2:
             break
-        else:
-            if q >= 0:
-                n3.append(int(r[:3]))
-            elif q >= -1:
-                n3.append(int(r[:2]))
-            elif q >= -2:
-                n3.append(int(r[:1]))
-        r1 = r
+        if q >= 0:
+            n3.append(int(r[:3]))
+        elif q >= -1:
+            n3.append(int(r[:2]))
+        elif q >= -2:
+            n3.append(int(r[:1]))
 
     # break each group of 3 digits into
     # ones, tens/twenties, hundreds
@@ -116,8 +114,7 @@ def create_spoken_form_for_number(num: int):
         b3 = (x % 1000) // 100
         if x == 0:
             continue  # skip
-        else:
-            t = thousands[i]
+        t = thousands[i]
 
         # print(str(b1) + ", " + str(b2) + ", " + str(b3))
         if b2 == 0:
@@ -164,12 +161,6 @@ def create_spoken_form_years(num: str):
     if remainder != 0:
         # 1906 => "nineteen six"
         if remainder < 10:
-            # todo: decide if we want nineteen oh five"
-            # todo: decide if we want "and"
-            # both seem like a waste
-            # if centuries % 10 != 0:
-            #     words.append("oh")
-
             words.append(REVERSE_PRONUNCIATION_MAP[str(remainder)])
         else:
             words.append(create_spoken_form_for_number(remainder))
@@ -221,10 +212,10 @@ def create_single_spoken_form(source: str):
     return mapped_source
 
 
-def create_exploded_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
+def create_exploded_forms(
+    spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []
+):
     """Exploded common packed words into separate words"""
-    # TODO: This could be moved somewhere else, possibly seeded from something like
-    # words to replace...
     packed_words = {"readme": "read me"}
 
     new_spoken_forms = []
@@ -243,7 +234,7 @@ def create_exploded_forms(spoken_forms: List[str], words_to_exclude: Optional[li
         # ex: "readme" explodes into "read me"
         else:
             for word in line.split(" "):
-                if word in packed_words.keys():
+                if word in packed_words:
                     exploded_form.append(packed_words[word])
                 else:
                     exploded_form.append(word)
@@ -251,7 +242,9 @@ def create_exploded_forms(spoken_forms: List[str], words_to_exclude: Optional[li
     return new_spoken_forms
 
 
-def create_extension_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
+def create_extension_forms(
+    spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []
+):
     """Add extension forms"""
     new_spoken_forms = []
 
@@ -267,7 +260,7 @@ def create_extension_forms(spoken_forms: List[str], words_to_exclude: Optional[l
             if substring in words_to_exclude:
                 continue
 
-            if substring in file_extensions_map.keys():
+            if substring in file_extensions_map:
                 file_extension_forms.append(file_extensions_map[substring])
                 dotted_extension_form.append(REVERSE_PRONUNCIATION_MAP["."])
                 dotted_extension_form.append(file_extensions_map[substring])
@@ -286,7 +279,9 @@ def create_extension_forms(spoken_forms: List[str], words_to_exclude: Optional[l
     return set(dict.fromkeys(new_spoken_forms))
 
 
-def create_cased_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
+def create_cased_forms(
+    spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []
+):
     """Add lower and upper case forms"""
     new_spoken_forms = []
 
@@ -310,7 +305,9 @@ def create_cased_forms(spoken_forms: List[str], words_to_exclude: Optional[list[
     return set(dict.fromkeys(new_spoken_forms))
 
 
-def create_abbreviated_forms(spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []):
+def create_abbreviated_forms(
+    spoken_forms: List[str], words_to_exclude: Optional[list[str]] = []
+):
     """Add abbreviated case forms"""
     new_spoken_forms = []
 
@@ -402,7 +399,9 @@ def create_spoken_number_forms(source: List[str], words_to_exclude: list[str] = 
     return set(dict.fromkeys(spoken_forms))
 
 
-def create_spoken_forms_from_regex(source: str, pattern: re.Pattern, words_to_exclude: Optional[list[str]] = []):
+def create_spoken_forms_from_regex(
+    source: str, pattern: re.Pattern, words_to_exclude: Optional[list[str]] = []
+):
     """
     Creates a list of spoken forms for source using the provided regex pattern.
     For numeric pieces detected by the regex, generates both digit-wise and full
@@ -410,7 +409,7 @@ def create_spoken_forms_from_regex(source: str, pattern: re.Pattern, words_to_ex
     """
     source_without_apostrophes = source.replace("'", "")
     pieces = list(pattern.finditer(source_without_apostrophes))
-    spoken_forms = list(map(lambda x: x.group(0), pieces))
+    spoken_forms = [piece.group(0) for piece in pieces]
 
     # NOTE: Order is sometimes important
     transforms = [
@@ -437,7 +436,6 @@ def generate_string_subsequences(
     # 1. Each word in source, eg "foo bar baz" -> "foo", "bar", "baz".
     # 2. Each leading subsequence of words from source,
     #    eg "foo bar baz" -> "foo", "foo bar", "foo bar baz"
-    #    (but not "bar baz" - TODO: is this intentional?)
     #
     # Except for:
     # 3. strings shorter than minimum_term_length
@@ -481,7 +479,6 @@ class Actions:
             source, REGEX_NO_SYMBOLS, words_to_exclude or []
         )
 
-        # todo: this could probably be optimized out if there's no symbols
         spoken_forms_with_symbols = create_spoken_forms_from_regex(
             source, REGEX_WITH_SYMBOLS, words_to_exclude or []
         )

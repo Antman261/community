@@ -1,4 +1,6 @@
 tag: user.help_open
+mode: command
+mode: dictation
 -
 help pump$: user.help_next()
 help tug$: user.help_previous()

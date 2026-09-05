@@ -15,12 +15,6 @@ _file_extensions_defaults = {
     "dot vim": ".vim",
     "dot see": ".c",
     "dot see sharp": ".cs",
-    "dot com": ".com",
-    "dot net": ".net",
-    "dot org": ".org",
-    "dot us": ".us",
-    "dot U S": ".us",
-    "dot co dot UK": ".co.uk",
     "dot exe": ".exe",
     "dot bin": ".bin",
     "dot bend": ".bin",
@@ -67,4 +61,4 @@ ctx = Context()
     default=_file_extensions_defaults,
 )
 def on_update(values):
-    ctx.lists["self.file_extension"] = values
+    ctx.lists["user.file_extension"] = values

@@ -1,5 +1,6 @@
 app: vscode
 -
+
 tag(): user.find_and_replace
 # tag(): user.line_commands
 tag(): user.multiple_cursors
@@ -126,7 +127,7 @@ format selection: user.vscode("editor.action.formatSelection")
 # imports fix: user.vscode("editor.action.organizeImports")
 problem next: user.vscode("editor.action.marker.nextInFiles")
 problem last: user.vscode("editor.action.marker.prevInFiles")
-problem fix: user.vscode("problems.action.showQuickFixes")
+problem fix: user.vscode("editor.action.quickFix")
 rename that: user.vscode("editor.action.rename")
 refactor that: user.vscode("editor.action.refactor")
 whitespace trim: user.vscode("editor.action.trimTrailingWhitespace")
@@ -219,16 +220,20 @@ debug console: user.vscode("workbench.debug.action.toggleRepl")
 debug clean: user.vscode("workbench.debug.panel.action.clearReplAction")
 
 # Terminal
-term external: user.vscode("workbench.action.terminal.openNativeConsole")
-term make: user.vscode("workbench.action.terminal.new")
-term pump: user.vscode("workbench.action.terminal.focusNext")
-term tug: user.vscode("workbench.action.terminal.focusPrevious")
-term split: user.vscode("workbench.action.terminal.split")
-term zoom: user.vscode("workbench.action.toggleMaximizedPanel")
-#term chuck: user.vscode("workbench.action.terminal.kill")
-term scroll up: user.vscode("workbench.action.terminal.scrollUp")
-term scroll down: user.vscode("workbench.action.terminal.scrollDown")
-term <number_small>: user.vscode_terminal(number_small)
+terminal external: user.vscode("workbench.action.terminal.openNativeConsole")
+terminal make: user.vscode("workbench.action.terminal.new")
+terminal pump: user.vscode("workbench.action.terminal.focusNext")
+terminal tug: user.vscode("workbench.action.terminal.focusPrevious")
+terminal split: user.vscode("workbench.action.terminal.split")
+terminal zoom: user.vscode("workbench.action.toggleMaximizedPanel")
+#terminal chuck: user.vscode("workbench.action.terminal.kill")
+terminal scroll up: user.vscode("workbench.action.terminal.scrollUp")
+terminal scroll down: user.vscode("workbench.action.terminal.scrollDown")
+terminal <number_small>: user.vscode_terminal(number_small)
+
+task run [<user.text>]:
+    user.vscode("workbench.action.tasks.runTask")
+    insert(user.text or "")
 
 #Expand/Shrink AST Selection
 take less: user.vscode("editor.action.smartSelect.shrink")

@@ -246,3 +246,31 @@ export async function $1($2) {
     $0
 }
 ---
+
+name: objectGetter
+phrase: get method
+insertionScope: statement
+-
+get $0() {
+    return $0
+},
+---
+
+name: lifecycleService
+phrase: lifecycle service
+insertionScope: statement
+-
+import { newNode } from '@antman/lifecycle';
+
+export const $0 = newNode(() => {
+  return {
+    name: '$0',
+    async start() {
+      //
+    },
+    async close() {
+      //
+    },
+  };
+});
+---
